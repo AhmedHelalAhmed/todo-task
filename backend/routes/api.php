@@ -18,5 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('tasks','Api\TasksController@index');
-Route::post('tasks','Api\TasksController@store');
+Route::get('tasks','Api\TasksController@index')->middleware('cors');
+Route::post('tasks','Api\TasksController@store')->middleware('cors');
