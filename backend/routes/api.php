@@ -22,3 +22,6 @@ Route::get('tasks','Api\TasksController@index')->middleware('cors');
 Route::post('tasks','Api\TasksController@store')->middleware('cors');
 //must be enhance to delete not post
 Route::post('tasks/{id}', 'Api\TasksController@destroy')->middleware('cors');
+
+//to swap the elements in case of up and down in frontend
+Route::post('tasks/{id1}/{id2}', 'Api\TasksController@swap')->middleware('cors');

@@ -14,8 +14,8 @@
         <th scope="row" v-bind:index="key++">{{key}}</th>
         <td>{{task.description}}</td>
         <td><button @click="deletetask(task)" class="btn btn-danger">Delete</button></td>
-        <td><button @click="uptask(task)" class="btn btn-light">Up</button></td>
-        <td><button @click="downtask(task)" class="btn btn-warning">Down</button></td>
+        <td><button @click="uptask(task.id,task.id-1,task)" class="btn btn-light">Up</button></td>
+        <td><button @click="downtask(task.id,task.id+1,task)" class="btn btn-warning">Down</button></td>
         <td><button @click="edittask(task)" class="btn btn-primary">Edit</button></td>
         <td><button @click="viewtask(task)" class="btn btn-info">View</button></td>
       </tr>
@@ -41,11 +41,7 @@ export default {
   },
 
   methods: {
-    getcount: function(){
-      console.log("dddddddddddddddddddddddddd"+this.count);
-      this.count++;
-      return this.count;
-    },
+
     deletetask: function(task) {
 
       //frontend
@@ -68,27 +64,40 @@ export default {
 
 
     },
-    uptask: function(task) {
+    uptask(the_current_id, the_up_id ,task) {
 
       //frontend
-      var index = this.tasks.indexOf(task);
-      if (this.tasks[index - 1]) {
-        var temp = this.tasks[index - 1];
-        this.tasks[index - 1] = this.tasks[index];
-        this.tasks[index] = temp;
+      let current_index = this.tasks.indexOf(task);
+      let up_index = current_index - 1;
+      if (this.tasks[up_index]) {
+        var temp = this.tasks[up_index];
+        this.tasks[up_index] = this.tasks[current_index];
+        this.tasks[current_index] = temp;
+        //backend
+        this.swapbackend(the_current_id,the_up_id);
+
+        //re render the component
+        this.$forceUpdate();
       } else {
         alert("can not do this");
       }
 
+
+
+
     },
 
-    downtask: function(task) {
+    downtask: function(the_current_id, the_down_id ,task) {
       //frontend
       var index = this.tasks.indexOf(task);
       if (this.tasks[index + 1]) {
+        //backend
+        this.swapbackend(the_current_id,the_down_id);
         var temp = this.tasks[index + 1];
         this.tasks[index + 1] = this.tasks[index];
         this.tasks[index] = temp;
+        //re render the component
+        this.$forceUpdate();
       } else {
         alert("can not do this");
       }
@@ -102,6 +111,31 @@ export default {
 
 
 
+    },
+    swapbackend: function(id1,id2){
+
+      this.$http.post("http://127.0.0.1:8000/api/tasks/"+id1+"/"+id2,{}, {
+        emulateJSON: true}).then(res => {
+        //  console.log("sucesss in request");
+
+        //frontend swap ids
+         for(let task of this.tasks){
+
+           //second
+           if(task.description === res.body.data.second.description){
+              this.tasks[this.tasks.indexOf(task)].id = res.body.data.second.id;
+           }
+
+           //first
+           if(task.description === res.body.data.first.description){
+             this.tasks[this.tasks.indexOf(task)].id = res.body.data.first.id;
+           }
+
+         }
+
+      }).catch(function(error) {
+        // console.log("errrorrrr in request");
+      });
     }
   },
 

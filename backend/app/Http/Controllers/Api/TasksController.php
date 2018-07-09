@@ -85,6 +85,25 @@ class TasksController extends Controller
     public function destroy($id)
     {
         Task::destroy($id);
-        return "test";
     }
+
+    
+    public function swap($id1,$id2)
+    {   
+        $task1 = Task::findOrFail($id1); 
+        $temp=$task1 ->description;
+
+        $task2 = Task::findOrFail($id2); 
+
+        $task1->description=$task2->description;
+        $task2->description=$temp;
+
+        $task1->save();
+        $task2->save();
+
+        return response()->json(['data'=>['first'=>$task1,'second'=>$task2]]);
+
+    }
+
+
 }
