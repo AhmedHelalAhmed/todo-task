@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('tasks','Api\TasksController@index')->middleware('cors');
 Route::post('tasks','Api\TasksController@store')->middleware('cors');
+//must be enhance to delete not post
+Route::post('tasks/{id}', 'Api\TasksController@destroy')->middleware('cors');
