@@ -20,15 +20,6 @@ class TasksController extends Controller
        return TaskResource::collection($tasks);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -50,7 +41,12 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $task = Task::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return "error ModelNotFoundException";
+        }
+        return response()->json(['data'=>['task'=>$task]]);
     }
 
     /**
@@ -61,7 +57,8 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        return response()->json(['data'=>['task'=>$task]]);
     }
 
     /**
@@ -73,7 +70,12 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $task = Task::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return "error ModelNotFoundException";
+        }
+        $task->update($request->all());
     }
 
     /**
