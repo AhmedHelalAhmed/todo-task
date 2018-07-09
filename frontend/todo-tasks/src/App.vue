@@ -30,8 +30,8 @@ export default {
       //e = the value entered by user
       // console.log("e=");
       //  console.log(e);
-        // console.log(this.tasks);
-      this.tasks.push({id: 0,description: e});
+      // console.log(this.tasks);
+      this.tasks.push(e);
       // console.log("tasks=");
       // console.log(this.tasks);
     }

@@ -1,14 +1,13 @@
 <template>
 <div class="container">
-  <h1 class="text-center">All Tasks</h1>
+  <h1 class="text-center">Your Tasks</h1>
 
   <table class="table table-bordered table-dark">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Task</th>
-        <th scope="col" colspan="3" class="text-center">Action</th>
-
+        <th scope="col" colspan="5" class="text-center">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -16,9 +15,12 @@
       <tr v-model="tasks" v-for='task in tasks'>
         <th scope="row">{{task.id}}</th>
         <td>{{task.description}}</td>
-        <td><button @click="deletetask(task)" class="btn btn-danger">Done</button></td>
-        <td><button @click="uptask(task)" class="btn btn-danger">Up</button></td>
-        <td><button @click="deletetask(task)" class="btn btn-danger">Down</button></td>
+        <td><button @click="deletetask(task)" class="btn btn-danger">Delete</button></td>
+        <td><button @click="uptask(task)" class="btn btn-warning">Up</button></td>
+        <td><button @click="deletetask(task)" class="btn btn-warning">Down</button></td>
+        <td><button @click="edittask(task)" class="btn btn-primary">Edit</button></td>
+        <td><button @click="edittask(task)" class="btn btn-info">View</button></td>
+
       </tr>
     </tbody>
   </table>
@@ -59,8 +61,7 @@ export default {
       let index = val.length - 1
       let description = val[index].description;
       let id = val[index].id;
-      // console.log(val);
-      // this.tasks.push({id:val[0].id,description:val[0].description});
+      this.tasks.push({id:id,description:description});
     }
   }
 
