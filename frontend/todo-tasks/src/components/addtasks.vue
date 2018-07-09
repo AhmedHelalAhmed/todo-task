@@ -36,6 +36,12 @@
       addtask: function() {
 
 
+
+        /*
+          event from child to parent to change it's value
+          and set it with new value that is entered
+        */
+        
         //add to frontend
         this.$emit('addTask',this.description);
 

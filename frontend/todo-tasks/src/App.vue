@@ -2,18 +2,12 @@
 <div class="container">
   <h1>{{title}}</h1>
   <addtasks v-on:addTask="listenToAddTask($event)"></addtasks>
-  <showtasks tasks="newTask"></showtasks>
+  <showtasks v-bind:newTask="tasks"></showtasks>
 </div>
 </template>
-
 <script>
 import AddTasks from './components/addtasks.vue'
 import ShowTasks from './components/showtasks.vue'
-
-import {
-  bus
-} from './main.js';
-
 
 export default {
   components: {
@@ -24,6 +18,7 @@ export default {
 
   data() {
     return {
+      //just contain new data
       tasks: [],
       title: 'TODO TASKS',
       description: ''
@@ -42,6 +37,10 @@ export default {
     }
   },
 }
+
+
+
+
 </script>
 
 <style scoped>
