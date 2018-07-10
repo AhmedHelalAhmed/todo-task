@@ -16,8 +16,8 @@
         <td><button @click="deletetask(task)" class="btn btn-danger">Delete</button></td>
         <td><button @click="uptask(task.id,task.id-1,task)" class="btn btn-light">Up</button></td>
         <td><button @click="downtask(task.id,task.id+1,task)" class="btn btn-warning">Down</button></td>
-        <td @click="edittask()" ><router-link to="/edit/2"  class="btn btn-primary">Edit</router-link></td>
-        <td @click="viewtask()" ><router-link to="/show/3" class="btn btn-info">view</router-link></td>
+        <td @click="edittask()" ><router-link to=`'/edit/'+"{{task.id}}"`  class="btn btn-primary">Edit</router-link></td>
+        <td @click="viewtask()" ><router-link to=`'/show/'+"{{task.id}}"` class="btn btn-info">view</router-link></td>
       </tr>
     </tbody>
   </table>
