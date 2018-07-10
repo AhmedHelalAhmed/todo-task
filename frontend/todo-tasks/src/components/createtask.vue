@@ -22,7 +22,9 @@
     <div class="form-group row">
       <div class="col-sm-10">
         <button v-on:click="createtask" type="button" class="btn btn-primary">Create</button>
-
+        <div @click="back()" class ="back">
+          <router-link to="/"  class="btn btn-primary">Back</router-link>
+        </div>
       </div>
     </div>
   </form>
@@ -59,11 +61,17 @@ export default {
         this.$router.push('/');
         console.log("in createtask method");
       });
-
     },
+    back(){
+      //show and hide components
+        this.$emit('createTask',true);
+    }
   },
 
 }
 </script>
 <style>
+.back{
+  display:inline;
+}
 </style>

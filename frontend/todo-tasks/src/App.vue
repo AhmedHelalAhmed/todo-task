@@ -57,7 +57,7 @@ export default {
 
     },
     listenToCreateTask(e){
-      console.log("ssssssssssssssssssssssssssssssssss");
+      // console.log("ssssssssssssssssssssssssssssssssss");
       this.maincreate = e;
       this.mainApp=e;
     }
