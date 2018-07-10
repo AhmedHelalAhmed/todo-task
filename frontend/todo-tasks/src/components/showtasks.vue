@@ -103,8 +103,6 @@ export default {
       }
     },
     edittask: function() {
-
-
           this.$emit('changeView',false);
     },
     viewtask: function() {

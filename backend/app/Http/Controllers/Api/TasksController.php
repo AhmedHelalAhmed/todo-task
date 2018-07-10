@@ -75,7 +75,9 @@ class TasksController extends Controller
         } catch (ModelNotFoundException $e) {
             return "error ModelNotFoundException";
         }
+        
         $task->update($request->all());
+        return $request->all();
     }
 
     /**

@@ -1,15 +1,19 @@
 <template>
 <div class="container">
-<h1>show task is here</h1>
-<h1>id : {{id}}</h1>
-
-
-<div @click="back()">
-
-  <router-link to="/" class="btn btn-primary">Back</router-link>
-
-
-</div>
+  <div class="card">
+    <div class="card-header">
+      {{description}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Details</h5>
+      <p class="card-text">{{details}}</p>
+    </div>
+    <div class="card-footer text-muted">
+      <div @click="back()">
+        <router-link to="/" class="btn btn-primary">Back</router-link>
+      </div>
+    </div>
+  </div>
 
 </div>
 </template>
@@ -17,15 +21,24 @@
   export default {
     data() {
       return {
-        description: "",
+        description: '',
         id: this.$route.params.id,
+        details: '',
       }
     },
+    created(){
+    this.$http.get("http://127.0.0.1:8000/api/tasks/"+this.id).then(function(response){
 
+      this.description=response.data.data.task.description;
+      this.details=response.data.data.task.details;
+      // console.log(response.data.data.task.description);
+
+    });
+  },
     methods: {
       back(){
           this.$emit('changeView',true);
-        
+
       }
     },
 
