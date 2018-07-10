@@ -117,12 +117,18 @@ class TasksController extends ApiController
     public function swap($id1,$id2)
     {   
         $task1 = Task::findOrFail($id1); 
-        $temp=$task1 ->description;
+        $tempdescription=$task1 ->description;
+        $tempdetails=$task1 ->details;
 
         $task2 = Task::findOrFail($id2); 
-
+        
+        //description
         $task1->description=$task2->description;
-        $task2->description=$temp;
+        $task2->description=$tempdescription;
+
+        //details
+        $task1->details=$task2->details;
+        $task2->details=$tempdetails;
 
         $task1->save();
         $task2->save();
