@@ -1,4 +1,5 @@
-<template>
+
++<template>
 <div class="container">
   <header>
     <h1 
@@ -30,13 +31,13 @@
         </td>
         <td>
         <button 
-        @click="uptask(task.id,task.id-1,task)" 
+        @click="uptask(task.id,tasks[key-1-1].id,task)" 
         class="btn btn-light"
         >Up</button>
         </td>
         <td>
         <button 
-        @click="downtask(task.id,task.id+1,task)" 
+        @click="downtask(task.id,tasks[key-1+1].id,task)" 
         class="btn btn-warning"
         >Down</button>
         </td>
