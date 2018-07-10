@@ -9,7 +9,7 @@
     </div>
   </div>
   </div>
-</form> 
+</form>
 
 <div @click="back()">
   <router-link to="/"  class="btn btn-primary">Back</router-link>
@@ -40,14 +40,15 @@
           and set it with new value that is entered
         */
         //add to backend
-        this.$http.put("http://127.0.0.1:8000/api/tasks", {
+        this.$http.post("http://127.0.0.1:8000/api/tasks/"+this.id,
+        {_method: 'PUT', description: this.description},
+        {emulateJSON: true}).then(function(response) {
+          // console.log(response);
+          //redirect the url
+          this.$router.push('/');
 
-          description: this.description
-
-        }).then(function(response) {
-
-          console.log(response);
-          
+          //show and hide components
+          this.$emit('changeView',true);
           //add to frontend
           // this.$emit('addTask',response.data.data);
         });
@@ -55,8 +56,9 @@
       },
 
       back(){
+        //show and hide components
           this.$emit('changeView',true);
-        
+
       }
     },
 

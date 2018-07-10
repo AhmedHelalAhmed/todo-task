@@ -32,9 +32,7 @@
         */
         //add to backend
         this.$http.post("http://127.0.0.1:8000/api/tasks", {
-
           description: this.description
-
         }, {
           emulateJSON: true
 
