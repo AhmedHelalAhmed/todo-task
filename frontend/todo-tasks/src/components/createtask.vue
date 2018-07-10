@@ -2,22 +2,53 @@
 <div class="container">
   <form v-on:submit.prevent>
     <div class="form-group row">
-      <label for="description" class="col-sm-2 col-form-label">A Task</label>
+      <label 
+      for="description" 
+      class="col-sm-2 col-form-label
+      ">A Task</label>
+
       <div class="col-sm-10">
-        <input v-on:keyup.enter.prevent v-model='description' type="text" class="form-control" id="description" placeholder="Write a task">
+        <input 
+        v-on:keyup.enter.prevent 
+        v-model='description' 
+        type="text" 
+        class="form-control" 
+        id="description" 
+        placeholder="Write a task"
+        >
       </div>
     </div>
     <div class="form-group row">
-      <label for="details" class="col-sm-2 col-form-label">Details</label>
+      <label 
+      for="details" 
+      class="col-sm-2 col-form-label"
+      >Details</label>
+
       <div class="col-sm-10">
-        <textarea v-model='details' class="form-control" id="details" placeholder="Write details" rows="3"></textarea>
+        <textarea 
+        v-model='details' 
+        class="form-control" 
+        id="details" 
+        placeholder="Write details" 
+        rows="3"
+        ></textarea>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-10">
-        <button v-on:click="createtask" type="button" class="btn btn-primary">Create</button>
-        <div @click="back()" class ="back">
-          <router-link to="/"  class="btn btn-primary">Back</router-link>
+        <button 
+        v-on:click="createtask" 
+        type="button" 
+        class="btn btn-primary"
+        >Create</button>
+        <div 
+        @click="back()" 
+        class ="back"
+        >
+          <router-link 
+          to="/"  
+          class="btn btn-primary"
+          >Back</router-link>
         </div>
       </div>
     </div>
@@ -26,7 +57,7 @@
 </template>
 <script>
 export default {
-  props: ['mainApp'],
+  
 
   data() {
     return {

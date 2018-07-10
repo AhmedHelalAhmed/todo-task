@@ -1,7 +1,9 @@
 <template>
 <div class="container">
   <header>
-    <h1 class="text-center">===============( tasks )===============</h1>
+    <h1 
+    class="text-center"
+    >===============( tasks )===============</h1>
   </header>
 
   <table class="table table-bordered table-dark">
@@ -9,18 +11,49 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">The Task</th>
-        <th scope="col" colspan="5" class="text-center">The Actions</th>
+        <th 
+        scope="col" 
+        colspan="5" 
+        class="text-center"
+        >The Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for='(task, key, index) in tasks'>
         <th scope="row" v-bind:index="key++">{{key}}</th>
         <td>{{task.description}}</td>
-        <td><button @click="deletetask(task)" class="btn btn-danger">Delete</button></td>
-        <td><button @click="uptask(task.id,task.id-1,task)" class="btn btn-light">Up</button></td>
-        <td><button @click="downtask(task.id,task.id+1,task)" class="btn btn-warning">Down</button></td>
-        <td @click="edittask()" ><router-link :to="{path: '/edit/'+task.id}" class="btn btn-primary">Edit</router-link></td>
-        <td @click="viewtask()" ><router-link :to="{path: '/show/'+task.id}" class="btn btn-info">view</router-link></td>
+        <td>
+        <button 
+        @click="deletetask(task)" 
+        class="btn btn-danger"
+        >Delete</button>
+        </td>
+        <td>
+        <button 
+        @click="uptask(task.id,task.id-1,task)" 
+        class="btn btn-light"
+        >Up</button>
+        </td>
+        <td>
+        <button 
+        @click="downtask(task.id,task.id+1,task)" 
+        class="btn btn-warning"
+        >Down</button>
+        </td>
+        <td 
+        @click="edittask()" 
+        ><router-link 
+        :to="{path: '/edit/'+task.id}" 
+        class="btn btn-primary"
+        >Edit</router-link>
+        </td>
+        <td 
+        @click="viewtask()" 
+        ><router-link 
+        :to="{path: '/show/'+task.id}" 
+        class="btn btn-info"
+        >view</router-link>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -3,24 +3,41 @@
   <form v-on:submit.prevent>
     <div class="form-group">
       <label for="task">Task</label>
-      <input type="text" class="form-control" id="task" v-on:keyup.enter="edittask" v-model='description' aria-describedby="task" placeholder="Enter task">
-
-    </div>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="task" 
+      v-on:keyup.enter="edittask" 
+      v-model='description' 
+      aria-describedby="task" 
+      placeholder="Enter task"
+      ></div>
 
     <div class="form-group">
       <label for="details">Details</label>
-      <input type="text" class="form-control" id="details" v-on:keyup.enter="edittask" v-model='details' placeholder="Enter details">
+      <input 
+      type="text" 
+      class="form-control" 
+      id="details" 
+      v-on:keyup.enter="edittask" 
+      v-model='details' 
+      placeholder="Enter details"
+      ></div>
+
+    <button 
+    type="submit" 
+    class="btn btn-primary" 
+    v-on:click="edittask"
+    >Edit</button>
+    <div 
+    @click="back()" 
+    class ="back"
+    >
+      <router-link 
+      to="/"  
+      class="btn btn-primary"
+      >Back</router-link>
     </div>
-
-
-
-    <button type="submit" class="btn btn-primary" v-on:click="edittask">Edit</button>
-    <div @click="back()" class ="back">
-      <router-link to="/"  class="btn btn-primary">Back</router-link>
-    </div>
-
-
-
   </form>
 
 
@@ -71,7 +88,6 @@
       back(){
         //show and hide components
           this.$emit('changeView',true);
-
       }
     },
 

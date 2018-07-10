@@ -10,7 +10,10 @@
     </div>
     <div class="card-footer text-muted">
       <div @click="back()">
-        <router-link to="/" class="btn btn-primary">Back</router-link>
+        <router-link 
+        to="/" 
+        class="btn btn-primary"
+        >Back</router-link>
       </div>
     </div>
   </div>
