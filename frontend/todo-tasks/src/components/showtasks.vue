@@ -1,12 +1,15 @@
 <template>
 <div class="container">
-  <h1 class="text-center">Your Tasks</h1>
+  <header>
+    <h1 class="text-center">===============( tasks )===============</h1>
+  </header>
+
   <table class="table table-bordered table-dark">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Task</th>
-        <th scope="col" colspan="5" class="text-center">Actions</th>
+        <th scope="col">The Task</th>
+        <th scope="col" colspan="5" class="text-center">The Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -153,5 +156,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+/* Start Header */
+header h1{
+  padding: 20px;
+  margin: 20px;
+  text-transform: uppercase;
+}
+/* End Header */
+
 </style>
