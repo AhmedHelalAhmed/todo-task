@@ -57,11 +57,10 @@ export default {
       }, {
         emulateJSON: true
       }).then(function(res) {
-        // console.log("sucesss in request");
-        // console.log(res);
+
 
       }).catch(function(error) {
-        // console.log("errrorrrr in request");
+
       });
 
 
@@ -115,7 +114,7 @@ export default {
 
       this.$http.post("http://127.0.0.1:8000/api/tasks/"+id1+"/"+id2,{}, {
         emulateJSON: true}).then(res => {
-        //  console.log("sucesss in request");
+
 
         //frontend swap ids
          for(let task of this.tasks){
@@ -133,7 +132,7 @@ export default {
          }
 
       }).catch(function(error) {
-        // console.log("errrorrrr in request");
+
       });
     }
   },
@@ -142,7 +141,6 @@ export default {
   //from parent to child - change the value
   watch: {
     newTask: function(val) {
-      // console.log("tasks changed !!");
       let index = val.length - 1
       let description = val[index].description;
       let id = val[index].id;

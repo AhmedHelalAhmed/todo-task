@@ -51,19 +51,19 @@
           event from child to parent to change it's value
           and set it with new value that is entered
         */
-        // console.log(this.details);
+
         //add to backend
         this.$http.post("http://127.0.0.1:8000/api/tasks/"+this.id,
         {_method: 'PUT', description: this.description , details: this.details},
         {emulateJSON: true}).then(function(response) {
-          // console.log(response);
+
           //redirect the url
           this.$router.push('/');
 
           //show and hide components
           this.$emit('changeView',true);
           //add to frontend
-          // this.$emit('addTask',response.data.data);
+    
         });
 
       },

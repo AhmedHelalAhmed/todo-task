@@ -1,11 +1,5 @@
 <template>
 <div class="container">
-  <!--
-  <div v-if="submitted" class="alert alert-success" role="alert">
-    A Task created successfully
-  </div>
--->
-
   <form v-on:submit.prevent>
     <div class="form-group row">
       <label for="description" class="col-sm-2 col-form-label">A Task</label>

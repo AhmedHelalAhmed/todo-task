@@ -42,12 +42,7 @@ export default {
   methods: {
     listenToAddTask(e) {
       //e = the value entered by user
-      // console.log("e=");
-      //  console.log(e);
-      // console.log(this.tasks);
       this.tasks.push(e);
-      // console.log("tasks=");
-      // console.log(this.tasks);
     },
     listenToChangeView(e) {
       this.main = e;
@@ -57,7 +52,6 @@ export default {
 
     },
     listenToCreateTask(e){
-      // console.log("ssssssssssssssssssssssssssssssssss");
       this.maincreate = e;
       this.mainApp=e;
     }

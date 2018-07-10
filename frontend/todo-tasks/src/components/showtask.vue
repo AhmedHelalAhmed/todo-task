@@ -31,7 +31,7 @@
 
       this.description=response.data.data.task.description;
       this.details=response.data.data.task.details;
-      // console.log(response.data.data.task.description);
+  
 
     });
   },
