@@ -6,13 +6,35 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Task;
 use App\Http\Resources\TaskResource;
+use App\Http\Controllers\ApiController;
 
-class TasksController extends Controller
+/**
+ * Class TasksController
+ *
+ * @package App\Http\Controllers\Api
+ */
+class TasksController extends ApiController
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *     path="/api/tasks",
+     *     description="Returns tasks",
+     *     operationId="api.tasks.index",
+     *     tags={"tasks"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="tasks overview."
+     *     ),
+     *     @SWG\Response(
+     *         response=401,
+     *         description="Unauthorized action.",
+     *     )
+     * )
      */
     public function index()
     {

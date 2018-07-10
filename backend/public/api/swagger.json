@@ -1,0 +1,55 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "ToDo API",
+        "contact": {
+            "name": "Ahmed Helal",
+            "url": "https://www.facebook.com/A.Helal.A.A"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/tasks": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "Returns tasks",
+                "operationId": "api.tasks.index",
+                "responses": {
+                    "200": {
+                        "description": "tasks overview."
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "description": "Class ApiController",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "description": "Class ApiController",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
