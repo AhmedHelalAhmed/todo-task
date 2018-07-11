@@ -2,7 +2,7 @@
 +<template>
 <div class="container">
   <header>
-    <h1 
+    <h1
     class="text-center"
     >===============( tasks )===============</h1>
   </header>
@@ -12,9 +12,9 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">The Task</th>
-        <th 
-        scope="col" 
-        colspan="5" 
+        <th
+        scope="col"
+        colspan="5"
         class="text-center"
         >The Actions</th>
       </tr>
@@ -24,34 +24,34 @@
         <th scope="row" v-bind:index="key++">{{key}}</th>
         <td>{{task.description}}</td>
         <td>
-        <button 
-        @click="deletetask(task)" 
+        <button
+        @click="deletetask(task)"
         class="btn btn-danger"
         >Delete</button>
         </td>
         <td>
-        <button 
-        @click="uptask(task.id,tasks[key-1-1].id,task)" 
+        <button
+        @click="uptask(task.id,tasks[key-1-1].id,task)"
         class="btn btn-light"
         >Up</button>
         </td>
         <td>
-        <button 
-        @click="downtask(task.id,tasks[key-1+1].id,task)" 
+        <button
+        @click="downtask(task.id,tasks[key-1+1].id,task)"
         class="btn btn-warning"
         >Down</button>
         </td>
-        <td 
-        @click="edittask()" 
-        ><router-link 
-        :to="{path: '/edit/'+task.id}" 
+        <td
+        @click="edittask()"
+        ><router-link
+        :to="{path: '/edit/'+task.id}"
         class="btn btn-primary"
         >Edit</router-link>
         </td>
-        <td 
-        @click="viewtask()" 
-        ><router-link 
-        :to="{path: '/show/'+task.id}" 
+        <td
+        @click="viewtask()"
+        ><router-link
+        :to="{path: '/show/'+task.id}"
         class="btn btn-info"
         >view</router-link>
         </td>
