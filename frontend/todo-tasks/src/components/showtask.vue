@@ -10,10 +10,11 @@
     </div>
     <div class="card-footer text-muted">
       <div @click="back()">
-        <router-link 
-        to="/" 
-        class="btn btn-primary"
-        >Back</router-link>
+        <router-link
+          to="/"
+          class="btn btn-primary">
+          Back
+        </router-link>
       </div>
     </div>
   </div>
@@ -30,18 +31,16 @@
       }
     },
     created(){
-    this.$http.get("http://127.0.0.1:8000/api/tasks/"+this.id).then(function(response){
-
+    this.$http
+    .get("http://127.0.0.1:8000/api/tasks/"+this.id)
+    .then(function(response){
       this.description=response.data.data.task.description;
       this.details=response.data.data.task.details;
-  
-
     });
   },
     methods: {
       back(){
           this.$emit('changeView',true);
-
       }
     },
 

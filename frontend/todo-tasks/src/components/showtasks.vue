@@ -1,10 +1,10 @@
-
-+<template>
+<template>
 <div class="container">
   <header>
     <h1
-    class="text-center"
-    >===============( tasks )===============</h1>
+            class="text-center">
+            ===============( tasks )===============
+    </h1>
   </header>
 
   <table class="table table-bordered table-dark">
@@ -50,12 +50,12 @@
                 Edit
         </router-link>
         </td>
-        <td
-        @click="viewtask()"
-        ><router-link
+        <td @click="viewtask()">
+        <router-link
         :to="{path: '/show/'+task.id}"
-        class="btn btn-info"
-        >view</router-link>
+        class="btn btn-info">
+        view
+        </router-link>
         </td>
       </tr>
     </tbody>

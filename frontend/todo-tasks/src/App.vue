@@ -1,86 +1,84 @@
 <template>
-  <div class="container text-center">
-    <h1>{{title}}</h1>
+<div class="container text-center">
+  <h1>{{title}}</h1>
 
-    <addtasks
-      v-if="app_key&&app_create_key&&!route_name"
-      v-on:addTask="listenToAddTask($event)">
-    </addtasks>
+  <addtasks
+    v-if="app_key&&app_create_key&&!route_name"
+    v-on:addTask="listenToAddTask($event)">
+  </addtasks>
 
-    <showtasks
-      v-if="app_key&&app_create_key&&!route_name"
-      v-bind:newTask="tasks"
-      v-on:changeView="listenToChangeView($event)">
-    </showtasks>
+  <showtasks
+    v-if="app_key&&app_create_key&&!route_name"
+    v-bind:newTask="tasks"
+    v-on:changeView="listenToChangeView($event)">
+  </showtasks>
 
-    <router-view
-      v-on:changeView="listenToChangeView($event)" v-on:createTask="listenToCreateTask($event)" >
-    </router-view>
+  <router-view
+    v-on:changeView="listenToChangeView($event)"
+    v-on:createTask="listenToCreateTask($event)">
+  </router-view>
 
-
-
-    <div
+  <div
     v-on:click="callCreateTask()"
-      v-if="app_create_key&&app_key&&!route_name">
-        <router-link
-                :to="{path: '/create'}"
-                class="btn btn-success">
-                Create a Task
-        </router-link>
-    </div>
-
+    v-if="app_create_key&&app_key&&!route_name">
+      <router-link
+        :to="{path: '/create'}"
+        class="btn btn-success">
+        Create a Task
+      </router-link>
   </div>
+
+</div>
 </template>
 <script>
-  import AddTasks from './components/addtasks.vue'
-  import ShowTasks from './components/showtasks.vue'
-  import CreateTask from './components/createtask.vue'
-  import ShowTask from './components/showtask.vue'
-  import EditTask from './components/edittask.vue'
-  // import {bus} from './main';
-  export default {
-    components: {
-      'addtasks': AddTasks,
-      'showtasks': ShowTasks,
-      'createtask': CreateTask
-    },
+import AddTasks from './components/addtasks.vue'
+import ShowTasks from './components/showtasks.vue'
+import CreateTask from './components/createtask.vue'
+import ShowTask from './components/showtask.vue'
+import EditTask from './components/edittask.vue'
+// import {bus} from './main';
+export default {
+  components: {
+    'addtasks': AddTasks,
+    'showtasks': ShowTasks,
+    'createtask': CreateTask
+  },
 
 
-    data() {
-      return {
-        //just contain new data
-        tasks: [],//for new task that will be added
-        title: 'todo',//title of the app
-        description: '',//for add new task
-        app_key: true,//flag for show tasks and add tasks components and app
-        app_create_key: true,//flag for create task component and the rest of components
-        route_name: this.$route.name
-      }
-    },
-
-    methods: {
-      listenToAddTask(e) {
-        //e = the value entered by user
-        this.tasks.push(e);
-      },
-      listenToChangeView(e) {
-        this.app_key = e;
-        this.route_name = null;
-      },
-      callCreateTask() {
-        this.app_create_key = false;
-        this.route_name = null;
-      },
-      listenToCreateTask(e){
-        this.app_create_key = e;
-        this.route_name = null;
-      }
-    },
-    created(){
-
-      // bus.$emit('send_data',[this.app_key,this.app_create_key]);
+  data() {
+    return {
+      //just contain new data
+      tasks: [], //for new task that will be added
+      title: 'todo', //title of the app
+      description: '', //for add new task
+      app_key: true, //flag for show tasks and add tasks components and app
+      app_create_key: true, //flag for create task component and the rest of components
+      route_name: this.$route.name
     }
+  },
+
+  methods: {
+    listenToAddTask(e) {
+      //e = the value entered by user
+      this.tasks.push(e);
+    },
+    listenToChangeView(e) {
+      this.app_key = e;
+      this.route_name = null;
+    },
+    callCreateTask() {
+      this.app_create_key = false;
+      this.route_name = null;
+    },
+    listenToCreateTask(e) {
+      this.app_create_key = e;
+      this.route_name = null;
+    }
+  },
+  created() {
+    // bus.$emit('send_data',[this.app_key,this.app_create_key]);
   }
+}
 </script>
 
 <style scoped>
