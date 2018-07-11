@@ -14,20 +14,20 @@
     </showtasks>
 
     <router-view
-      v-on:changeView="listenToChangeView($event)">
+      v-on:changeView="listenToChangeView($event)" v-on:createTask="listenToCreateTask($event)" >
     </router-view>
 
-    <createtask
-      v-if="!app_create_key"
-      v-on:createTask="listenToCreateTask($event)">
-    </createtask>
 
-    <button
-      class="btn btn-success"
-      v-on:click="callCreateTask()"
+
+    <div
+    v-on:click="callCreateTask()"
       v-if="app_create_key&&app_key&&!route_name">
-      Create a Task
-    </button>
+        <router-link
+                :to="{path: '/create'}"
+                class="btn btn-success">
+                Create a Task
+        </router-link>
+    </div>
 
   </div>
 </template>
@@ -69,10 +69,11 @@
       },
       callCreateTask() {
         this.app_create_key = false;
-
+        this.route_name = null;
       },
       listenToCreateTask(e){
         this.app_create_key = e;
+        this.route_name = null;
       }
     },
     created(){
