@@ -17,17 +17,51 @@
         "/api/tasks": {
             "get": {
                 "tags": [
-                    "tasks"
+                    "get all tasks"
                 ],
-                "summary": "Display a listing of the resource.",
+                "summary": "Display a listing of the tasks.",
                 "description": "Returns tasks",
-                "operationId": "api.tasks.index",
                 "responses": {
                     "200": {
-                        "description": "tasks overview."
+                        "description": "ok"
+                    }
+                }
+            },
+            "post": {
+                "description": "Store the task in database",
+                "parameters": [
+                    {
+                        "name": "description",
+                        "description": "Task description",
+                        "required": true,
+                        "type": "string"
                     },
-                    "401": {
-                        "description": "Unauthorized action."
+                    {
+                        "name": "details",
+                        "description": "Task details",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            }
+        },
+        "/api/tasks/{id}": {
+            "get": {
+                "description": "Return the task data in json",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
                     }
                 }
             }

@@ -43,10 +43,12 @@
         </td>
         <td
         @click="edittask()"
-        ><router-link
-        :to="{path: '/edit/'+task.id}"
-        class="btn btn-primary"
-        >Edit</router-link>
+        >
+        <router-link
+                :to="{path: '/edit/'+task.id}"
+                class="btn btn-primary">
+                Edit
+        </router-link>
         </td>
         <td
         @click="viewtask()"
@@ -62,6 +64,7 @@
 </template>
 
 <script>
+// import {bus} from '../main';
 export default {
   props: ['newTask'],
   data() {
@@ -71,7 +74,7 @@ export default {
   },
 
   mounted() {
-    this.$http.get("http://127.0.0.1:8000/api/tasks").then(function(res) {
+      this.$http.get("http://127.0.0.1:8000/api/tasks").then(function(res) {
       this.tasks = res.data.data;
     });
 
@@ -183,6 +186,13 @@ export default {
         description: description
       });
     }
+  },
+
+  created(){
+        //   console.log(this.$route.name);
+        //   bus.$on('send_data', data => {
+        //           console.log(data,'from show list');
+        //   })
   }
 
 }

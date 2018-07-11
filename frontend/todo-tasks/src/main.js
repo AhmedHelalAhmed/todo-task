@@ -10,8 +10,10 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: Routes,
-  mode: 'history'
+  // mode: 'history' //to make the routes without #
 });
+
+export const bus = new Vue();
 
 new Vue({
   el: '#app',

@@ -17,22 +17,16 @@ class TasksController extends ApiController
 {
     
     /**
-     * Display a listing of the resource.
+     * Display a listing of the tasks.
      *
-     * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
      *     path="/api/tasks",
      *     description="Returns tasks",
-     *     operationId="api.tasks.index",
-     *     tags={"tasks"},
+     *     tags={"get all tasks"},
      *     @SWG\Response(
      *         response=200,
-     *         description="tasks overview."
-     *     ),
-     *     @SWG\Response(
-     *         response=401,
-     *         description="Unauthorized action.",
+     *         description="ok"
      *     )
      * )
      */
@@ -44,22 +38,50 @@ class TasksController extends ApiController
 
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @SWG\Post(
+     *     path="/api/tasks",
+     *     description="Store the task in database",
+     *     @SWG\Parameter(
+     *         name="description",
+     *         type="string",
+     *         description="Task description",
+     *         required=true,
+     *     ),
+     *     @SWG\Parameter(
+     *         name="details",
+     *         type="string",
+     *         description="Task details",
+     *         required=false,
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="OK",
+     *     ),
+     *     @SWG\Response(
+     *         response=422,
+     *         description="Missing Data"
+     *     )
+     * )
      */
     public function store(Request $request)
     {
         $task = Task::create($request->all());
-      return new TaskResource($task);
+        return new TaskResource($task);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @SWG\Get(
+     *     path="/api/tasks/{id}",
+     *     description="Return the task data in json",
+     *     @SWG\Response(
+     *         response=200,
+     *         description="OK",
+     *     ),
+     *     @SWG\Response(
+     *         response=422,
+     *         description="Missing Data",
+     *     )
+     * )
      */
     public function show($id)
     {
@@ -71,11 +93,20 @@ class TasksController extends ApiController
         return response()->json(['data'=>['task'=>$task]]);
     }
 
+
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @SWG\Get(
+     *     path="/api/tasks/{id}/edit,
+     *     description="Return the task data in json",
+     *     @SWG\Response(
+     *         response=200,
+     *         description="OK",
+     *     ),
+     *     @SWG\Response(
+     *         response=422,
+     *         description="Missing Data"
+     *     )
+     * )
      */
     public function edit($id)
     {
@@ -83,12 +114,36 @@ class TasksController extends ApiController
         return response()->json(['data'=>['task'=>$task]]);
     }
 
+
+
+
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @SWG\Put(
+     *     path="/api/tasks/{id},
+     *     description="Update the task in database",
+     *     @SWG\Parameter(
+     *         name="description",
+     *         in="query",
+     *         type="string",
+     *         description="Description of the task",
+     *         required=true,
+     *     ),
+     *     @SWG\Parameter(
+     *         name="details",
+     *         in="query",
+     *         type="string",
+     *         description="Details of the task",
+     *         required=false,
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="OK",
+     *     ),
+     *     @SWG\Response(
+     *         response=422,
+     *         description="Missing Data"
+     *     )
+     * )
      */
     public function update(Request $request, $id)
     {
@@ -102,11 +157,23 @@ class TasksController extends ApiController
        
     }
 
+
+
+
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @SWG\Delete(
+     *     path="/api/tasks/{id}/edit,
+     *     description="Remove the specified task from database",
+     *     @SWG\Response(
+     *         response=200,
+     *         description="OK",
+     *     ),
+     *     @SWG\Response(
+     *         response=422,
+     *         description="Missing Data"
+     *     )
+     * )
      */
     public function destroy($id)
     {
@@ -114,21 +181,37 @@ class TasksController extends ApiController
     }
 
     
+
+
+    /**
+     * @SWG\post(
+     *     path="/api/tasks/{id1}/{id2},
+     *     description="Swap two tasks in database and return the new updated data",
+     *     @SWG\Response(
+     *         response=200,
+     *         description="OK",
+     *     ),
+     *     @SWG\Response(
+     *         response=422,
+     *         description="Missing Data"
+     *     )
+     * )
+     */
     public function swap($id1,$id2)
     {   
         $task1 = Task::findOrFail($id1); 
-        $tempdescription=$task1 ->description;
-        $tempdetails=$task1 ->details;
+        $temp_description=$task1 ->description;
+        $temp_details=$task1 ->details;
 
         $task2 = Task::findOrFail($id2); 
         
         //description
         $task1->description=$task2->description;
-        $task2->description=$tempdescription;
+        $task2->description=$temp_description;
 
         //details
         $task1->details=$task2->details;
-        $task2->details=$tempdetails;
+        $task2->details=$temp_details;
 
         $task1->save();
         $task2->save();
