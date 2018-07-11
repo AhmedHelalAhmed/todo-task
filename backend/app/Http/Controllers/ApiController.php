@@ -9,27 +9,29 @@ use Illuminate\Http\Request;
  * @package App\Http\Controllers
  *
  * @SWG\Swagger(
- *     basePath="",
+ *     basePath="/api/",
  *     host="localhost:8000",
- *     schemes={"http"},
  *     @SWG\Info(
  *         version="1.0",
  *         title="ToDo",
  *         @SWG\Contact(name="Ahmed Helal Ahmed", url="https://www.facebook.com/A.Helal.A.A"),
  *     ),
  *     @SWG\Definition(
- *         definition="Error",
- *         required={"code", "message"},
+ *         definition="Task",
+ *         required={"description"},
+ *         default=false,
  *         @SWG\Property(
- *             property="code",
- *             type="integer",
- *             format="int32"
+ *             description="the name of a task",
+ *             property="description",
+ *             type="string",
  *         ),
  *         @SWG\Property(
- *             property="message",
- *             type="string"
+ *             description="the details of a task",
+ *             property="details",
+ *             type="string",
  *         )
  *     )
+ * 
  * )
  */
 class ApiController extends Controller

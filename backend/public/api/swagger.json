@@ -9,41 +9,38 @@
         "version": "1.0"
     },
     "host": "localhost:8000",
-    "basePath": "",
-    "schemes": [
-        "http"
-    ],
+    "basePath": "/api/",
     "paths": {
-        "/api/tasks": {
+        "/tasks": {
             "get": {
                 "tags": [
-                    "Tasks API"
+                    "tasks . . . to deal with tasks - crud operations -"
                 ],
-                "summary": "Display a listing of the tasks.",
-                "description": "Returns tasks",
+                "summary": "Get tasks",
+                "description": "Display a list of the tasks",
                 "responses": {
                     "200": {
-                        "description": "ok"
+                        "description": "Successful operation"
                     }
                 }
             },
             "post": {
                 "tags": [
-                    "Tasks API"
+                    "tasks . . . to deal with tasks - crud operations -"
                 ],
-                "summary": "Store a task in database.",
+                "summary": "Store a task.",
                 "description": "Store the task in database",
                 "parameters": [
                     {
                         "name": "description",
-                        "in": "query",
+                        "in": "body",
                         "description": "Task description",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "details",
-                        "in": "query",
+                        "in": "body",
                         "description": "Task details",
                         "required": false,
                         "type": "string"
@@ -51,7 +48,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "Successful operation"
                     },
                     "422": {
                         "description": "Missing Data"
@@ -59,15 +56,25 @@
                 }
             }
         },
-        "/api/tasks/{id}": {
+        "/tasks/{ID}": {
             "get": {
                 "tags": [
-                    "Tasks API"
+                    "tasks . . . to deal with tasks - crud operations -"
                 ],
-                "description": "Return the task data in json",
+                "summary": "show a task by ID.",
+                "description": "Return the task that has ID in the URL in JSON",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "path",
+                        "description": "ID of a task",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "Successful operation"
                     },
                     "422": {
                         "description": "Missing Data"
@@ -76,44 +83,36 @@
             },
             "put": {
                 "tags": [
-                    "Tasks API"
+                    "tasks . . . to deal with tasks - crud operations -"
                 ],
-                "description": "Update the task in database",
+                "summary": "Update a task by ID.",
+                "description": "Update the task that has the ID in the URL",
                 "parameters": [
                     {
                         "name": "description",
-                        "in": "query",
+                        "in": "body",
                         "description": "Description of the task",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "details",
-                        "in": "query",
+                        "in": "body",
                         "description": "Details of the task",
                         "required": false,
                         "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
                     },
-                    "422": {
-                        "description": "Missing Data"
+                    {
+                        "name": "ID",
+                        "in": "path",
+                        "description": "ID of a task",
+                        "required": true,
+                        "type": "integer"
                     }
-                }
-            }
-        },
-        "/api/tasks/{id}/edit": {
-            "get": {
-                "tags": [
-                    "Tasks API"
                 ],
-                "description": "Return the task data in json",
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "Successful operation"
                     },
                     "422": {
                         "description": "Missing Data"
@@ -122,12 +121,22 @@
             },
             "delete": {
                 "tags": [
-                    "Tasks API"
+                    "tasks . . . to deal with tasks - crud operations -"
                 ],
-                "description": "Remove the specified task from database",
+                "summary": "Delete a task.",
+                "description": "Delete the task that has the ID in the URL",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "path",
+                        "description": "ID of a task",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "Successful operation"
                     },
                     "422": {
                         "description": "Missing Data"
@@ -135,15 +144,58 @@
                 }
             }
         },
-        "/api/tasks/{id1}/{id2}": {
-            "post": {
+        "/tasks/{ID}/edit": {
+            "get": {
                 "tags": [
-                    "Tasks API"
+                    "tasks . . . to deal with tasks - crud operations -"
                 ],
-                "description": "Swap two tasks in database and return the new updated data",
+                "summary": "Edit a task by ID.",
+                "description": "Update Return the task that has the ID in the URL in JSON",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "path",
+                        "description": "ID of a task",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "Successful operation"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            }
+        },
+        "/tasks/{ID1}/{ID2}": {
+            "post": {
+                "tags": [
+                    "tasks . . . to deal with tasks - crud operations -"
+                ],
+                "summary": "Swap the IDs of two tasks.",
+                "description": "Swap two tasks data (description and details) which have the ids ID1 and ID2 in the URL and return the new updated data in JSON",
+                "parameters": [
+                    {
+                        "name": "ID1",
+                        "in": "path",
+                        "description": "ID1 of a task",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ID2",
+                        "in": "path",
+                        "description": "ID2 of an other task",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
                     },
                     "422": {
                         "description": "Missing Data"
@@ -153,22 +205,21 @@
         }
     },
     "definitions": {
-        "Error": {
+        "Task": {
             "required": [
-                "code",
-                "message"
+                "description"
             ],
             "properties": {
-                "code": {
-                    "description": "Class ApiController",
-                    "type": "integer",
-                    "format": "int32"
+                "description": {
+                    "description": "the name of a task",
+                    "type": "string"
                 },
-                "message": {
-                    "description": "Class ApiController",
+                "details": {
+                    "description": "the details of a task",
                     "type": "string"
                 }
-            }
+            },
+            "default": false
         }
     }
 }
