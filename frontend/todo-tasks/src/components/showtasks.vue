@@ -1,10 +1,10 @@
 <template>
 <div class="container">
   <header>
-    <h1
-            class="text-center">
-            ===============( tasks )===============
-    </h1>
+   <h1
+   class="text-center">
+   ===============( tasks )===============
+   </h1>
   </header>
 
   <table class="table table-bordered table-dark">
@@ -13,10 +13,11 @@
         <th scope="col">#</th>
         <th scope="col">The Task</th>
         <th
-        scope="col"
-        colspan="5"
-        class="text-center"
-        >The Actions</th>
+         scope="col"
+         colspan="5"
+         class="text-center">
+         The Actions
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -25,29 +26,30 @@
         <td>{{task.description}}</td>
         <td>
         <button
-        @click="deletetask(task)"
-        class="btn btn-danger"
-        >Delete</button>
+         @click="deletetask(task)"
+         class="btn btn-danger">
+         Delete
+        </button>
         </td>
         <td>
         <button
-        @click="uptask(task.id,tasks[key-1-1].id,task)"
-        class="btn btn-light"
-        >Up</button>
+         @click="uptask(task.id,tasks[key-1-1].id,task)"
+         class="btn btn-light">
+         Up
+        </button>
         </td>
         <td>
         <button
-        @click="downtask(task.id,tasks[key-1+1].id,task)"
-        class="btn btn-warning"
-        >Down</button>
+         @click="downtask(task.id,tasks[key-1+1].id,task)"
+         class="btn btn-warning">
+         Down
+        </button>
         </td>
-        <td
-        @click="edittask()"
-        >
+        <td@click="edittask()">
         <router-link
-                :to="{path: '/edit/'+task.id}"
-                class="btn btn-primary">
-                Edit
+         :to="{path: '/edit/'+task.id}"
+         class="btn btn-primary">
+         Edit
         </router-link>
         </td>
         <td @click="viewtask()">
@@ -120,12 +122,7 @@ export default {
       } else {
         alert("can not do this");
       }
-
-
-
-
     },
-
     downtask: function(the_current_id, the_down_id ,task) {
       //frontend
       var index = this.tasks.indexOf(task);
@@ -151,25 +148,19 @@ export default {
 
       this.$http.post("http://127.0.0.1:8000/api/tasks/"+id1+"/"+id2,{}, {
         emulateJSON: true}).then(res => {
-
-
         //frontend swap ids
          for(let task of this.tasks){
-
            //second
            if(task.description === res.body.data.second.description){
               this.tasks[this.tasks.indexOf(task)].id = res.body.data.second.id;
            }
-
            //first
            if(task.description === res.body.data.first.description){
              this.tasks[this.tasks.indexOf(task)].id = res.body.data.first.id;
            }
-
          }
 
       }).catch(function(error) {
-
       });
     }
   },
