@@ -66,7 +66,7 @@
 </template>
 
 <script>
-// import {bus} from '../main';
+// import {bus, test} from '../main';
 export default {
   props: ['newTask'],
   data() {
@@ -180,10 +180,12 @@ export default {
   },
 
   created(){
-        //   console.log(this.$route.name);
-        //   bus.$on('send_data', data => {
-        //           console.log(data,'from show list');
-        //   })
+  // console.log(test);
+  //==================================//
+  //   console.log(this.$route.name);
+  //   bus.$on('send_data', data => {
+  //           console.log(data,'from show list');
+  //   })
   }
 
 }

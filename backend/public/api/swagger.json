@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "ToDo API",
+        "title": "ToDo",
         "contact": {
-            "name": "Ahmed Helal",
+            "name": "Ahmed Helal Ahmed",
             "url": "https://www.facebook.com/A.Helal.A.A"
         },
         "version": "1.0"
@@ -17,7 +17,7 @@
         "/api/tasks": {
             "get": {
                 "tags": [
-                    "get all tasks"
+                    "Tasks API"
                 ],
                 "summary": "Display a listing of the tasks.",
                 "description": "Returns tasks",
@@ -28,16 +28,22 @@
                 }
             },
             "post": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "summary": "Store a task in database.",
                 "description": "Store the task in database",
                 "parameters": [
                     {
                         "name": "description",
+                        "in": "query",
                         "description": "Task description",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "details",
+                        "in": "query",
                         "description": "Task details",
                         "required": false,
                         "type": "string"
@@ -55,7 +61,86 @@
         },
         "/api/tasks/{id}": {
             "get": {
+                "tags": [
+                    "Tasks API"
+                ],
                 "description": "Return the task data in json",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "description": "Update the task in database",
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Description of the task",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "details",
+                        "in": "query",
+                        "description": "Details of the task",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            }
+        },
+        "/api/tasks/{id}/edit": {
+            "get": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "description": "Return the task data in json",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "description": "Remove the specified task from database",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
+            }
+        },
+        "/api/tasks/{id1}/{id2}": {
+            "post": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "description": "Swap two tasks in database and return the new updated data",
                 "responses": {
                     "200": {
                         "description": "OK"

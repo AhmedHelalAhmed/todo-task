@@ -15,6 +15,8 @@ const router = new VueRouter({
 
 export const bus = new Vue();
 
+// export const test = "test";
+
 new Vue({
   el: '#app',
   render: h => h(App),

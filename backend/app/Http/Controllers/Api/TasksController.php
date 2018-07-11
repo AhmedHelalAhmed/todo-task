@@ -23,7 +23,7 @@ class TasksController extends ApiController
      * @SWG\Get(
      *     path="/api/tasks",
      *     description="Returns tasks",
-     *     tags={"get all tasks"},
+     *     tags={"Tasks API"},
      *     @SWG\Response(
      *         response=200,
      *         description="ok"
@@ -38,18 +38,23 @@ class TasksController extends ApiController
 
 
     /**
+     * Store a task in database.
+     * 
      * @SWG\Post(
      *     path="/api/tasks",
      *     description="Store the task in database",
+     *     tags={"Tasks API"},
      *     @SWG\Parameter(
      *         name="description",
      *         type="string",
+     *         in="query",
      *         description="Task description",
      *         required=true,
      *     ),
      *     @SWG\Parameter(
      *         name="details",
      *         type="string",
+     *         in="query",
      *         description="Task details",
      *         required=false,
      *     ),
@@ -59,7 +64,7 @@ class TasksController extends ApiController
      *     ),
      *     @SWG\Response(
      *         response=422,
-     *         description="Missing Data"
+     *         description="Missing Data",
      *     )
      * )
      */
@@ -73,6 +78,7 @@ class TasksController extends ApiController
      * @SWG\Get(
      *     path="/api/tasks/{id}",
      *     description="Return the task data in json",
+     *      tags={"Tasks API"},
      *     @SWG\Response(
      *         response=200,
      *         description="OK",
@@ -96,8 +102,9 @@ class TasksController extends ApiController
 
     /**
      * @SWG\Get(
-     *     path="/api/tasks/{id}/edit,
+     *     path="/api/tasks/{id}/edit",
      *     description="Return the task data in json",
+     *      tags={"Tasks API"},
      *     @SWG\Response(
      *         response=200,
      *         description="OK",
@@ -119,8 +126,9 @@ class TasksController extends ApiController
 
     /**
      * @SWG\Put(
-     *     path="/api/tasks/{id},
+     *     path="/api/tasks/{id}",
      *     description="Update the task in database",
+     *      tags={"Tasks API"},
      *     @SWG\Parameter(
      *         name="description",
      *         in="query",
@@ -163,8 +171,9 @@ class TasksController extends ApiController
 
     /**
      * @SWG\Delete(
-     *     path="/api/tasks/{id}/edit,
+     *     path="/api/tasks/{id}/edit",
      *     description="Remove the specified task from database",
+     *      tags={"Tasks API"},
      *     @SWG\Response(
      *         response=200,
      *         description="OK",
@@ -185,8 +194,9 @@ class TasksController extends ApiController
 
     /**
      * @SWG\post(
-     *     path="/api/tasks/{id1}/{id2},
+     *     path="/api/tasks/{id1}/{id2}",
      *     description="Swap two tasks in database and return the new updated data",
+     *      tags={"Tasks API"},
      *     @SWG\Response(
      *         response=200,
      *         description="OK",

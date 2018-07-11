@@ -14,8 +14,8 @@ use Illuminate\Http\Request;
  *     schemes={"http"},
  *     @SWG\Info(
  *         version="1.0",
- *         title="ToDo API",
- *         @SWG\Contact(name="Ahmed Helal", url="https://www.facebook.com/A.Helal.A.A"),
+ *         title="ToDo",
+ *         @SWG\Contact(name="Ahmed Helal Ahmed", url="https://www.facebook.com/A.Helal.A.A"),
  *     ),
  *     @SWG\Definition(
  *         definition="Error",
