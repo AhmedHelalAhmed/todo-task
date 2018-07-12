@@ -107,13 +107,13 @@ class TasksController extends ApiController
      * 
      * @SWG\Get(
      *     path="/tasks/{ID}",
-     *     description="Return the task that has ID in the URL in JSON",
+     *     description="Get the task that has ID in the URL in JSON",
      *      tags={"tasks . . . to deal with tasks - crud operations -"},
      *     @SWG\Parameter(
      *         name="ID",
      *         type="integer",
      *         in="path",
-     *         description="ID of a task",
+     *         description="task's id",
      *         required=true,
      *     ),
      *     @SWG\Response(
@@ -155,13 +155,13 @@ class TasksController extends ApiController
      * 
      * @SWG\Get(
      *     path="/tasks/{ID}/edit",  
-     *     description="Update Return the task that has the ID in the URL in JSON",
+     *     description="Edit - return the task that has the ID in the URL in JSON",
      *      tags={"tasks . . . to deal with tasks - crud operations -"},
      *     @SWG\Parameter(
      *         name="ID",
      *         type="integer",
      *         in="path",
-     *         description="ID of a task",
+     *         description="task's id",
      *         required=true,
      *     ),
      *     @SWG\Response(
@@ -177,18 +177,32 @@ class TasksController extends ApiController
      *         description="Bad operation - Fail to pass validation"
      *     ),
      *     @SWG\Response(
-     *         response=500,
-     *         description="Internal server error"
-     *     ),
-     *     @SWG\Response(
      *         response=403,
      *         description="Forbidden - Authenticated, but does not have the permissions to perform an action"
+     *     ),
+     *     @SWG\Response(
+     *         response=404,
+     *         description="Task Model NOT Found"
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error"
      *     ),
      * )
      */
     public function edit($id)
     {
-        $task = Task::findOrFail($id);
+        
+
+        try {
+            $task = Task::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(
+                ['error' => 'Task Model NOT Found'], 404);
+        }
+
+
+
         return response()->json(
             ['data'=>['task'=>new TaskResource($task)]]);
     }
@@ -280,7 +294,7 @@ class TasksController extends ApiController
      *         name="ID",
      *         type="integer",
      *         in="path",
-     *         description="ID of a task",
+     *         description="task's id",
      *         required=true,
      *     ),
      *     @SWG\Response(
@@ -330,14 +344,14 @@ class TasksController extends ApiController
      *         name="ID1",
      *         type="integer",
      *         in="path",
-     *         description="ID1 of a task",
+     *         description="first task's id",
      *         required=true,
      *     ),
      *     @SWG\Parameter(
      *         name="ID2",
      *         type="integer",
      *         in="path",
-     *         description="ID2 of an other task",
+     *         description="second task's id",
      *         required=true,
      *     ),
      *     @SWG\Response(

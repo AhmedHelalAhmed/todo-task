@@ -88,12 +88,12 @@
                     "tasks . . . to deal with tasks - crud operations -"
                 ],
                 "summary": "show a task by ID.",
-                "description": "Return the task that has ID in the URL in JSON",
+                "description": "Get the task that has ID in the URL in JSON",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "path",
-                        "description": "ID of a task",
+                        "description": "task's id",
                         "required": true,
                         "type": "integer"
                     }
@@ -181,7 +181,7 @@
                     {
                         "name": "ID",
                         "in": "path",
-                        "description": "ID of a task",
+                        "description": "task's id",
                         "required": true,
                         "type": "integer"
                     }
@@ -214,12 +214,12 @@
                     "tasks . . . to deal with tasks - crud operations -"
                 ],
                 "summary": "Edit a task by ID.",
-                "description": "Update Return the task that has the ID in the URL in JSON",
+                "description": "Edit - return the task that has the ID in the URL in JSON",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "path",
-                        "description": "ID of a task",
+                        "description": "task's id",
                         "required": true,
                         "type": "integer"
                     }
@@ -234,11 +234,14 @@
                     "400": {
                         "description": "Bad operation - Fail to pass validation"
                     },
-                    "500": {
-                        "description": "Internal server error"
-                    },
                     "403": {
                         "description": "Forbidden - Authenticated, but does not have the permissions to perform an action"
+                    },
+                    "404": {
+                        "description": "Task Model NOT Found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
                     }
                 }
             }
@@ -254,14 +257,14 @@
                     {
                         "name": "ID1",
                         "in": "path",
-                        "description": "ID1 of a task",
+                        "description": "first task's id",
                         "required": true,
                         "type": "integer"
                     },
                     {
                         "name": "ID2",
                         "in": "path",
-                        "description": "ID2 of an other task",
+                        "description": "second task's id",
                         "required": true,
                         "type": "integer"
                     }
