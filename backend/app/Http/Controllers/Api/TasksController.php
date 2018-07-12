@@ -23,7 +23,7 @@ class TasksController extends ApiController
      * @SWG\Get(
      *     path="/tasks",
      *     description="Display a list of the tasks",
-     *     tags={"tasks . . . to deal with tasks - crud operations -"},
+     *     tags={"Tasks - All CRUD operations -","Get All tasks"},
      *     @SWG\Response(
      *         response=200,
      *         description="Successful operation - All data received"
@@ -56,15 +56,7 @@ class TasksController extends ApiController
      * @SWG\Post(
      *     path="/tasks",
      *     description="Store the task in database and return it in JSON",
-     *     tags={"tasks . . . to deal with tasks - crud operations -"},
-     *     @SWG\Parameter(
-     *         name="details",
-     *         type="string",
-     *         in="query",
-     *         description="Task details",
-     *         required=false,
-     *         @SWG\Schema(type="string",example="This task is important because . . ."),
-     *     ),
+     *     tags={"Tasks - All CRUD operations -","Create a new task"},
      *     @SWG\Parameter(
      *         name="description",
      *         type="string",
@@ -73,7 +65,14 @@ class TasksController extends ApiController
      *         required=true,
      *         @SWG\Schema(type="string",example="Task to do"),
      *     ),
-
+     *     @SWG\Parameter(
+     *         name="details",
+     *         type="string",
+     *         in="query",
+     *         description="Task details",
+     *         required=false,
+     *         @SWG\Schema(type="string",example="This task is important because . . ."),
+     *     ),
      *     @SWG\Response(
      *         response=200,
      *         description="Successful operation - task stored",
@@ -108,7 +107,7 @@ class TasksController extends ApiController
      * @SWG\Get(
      *     path="/tasks/{ID}",
      *     description="Get the task that has ID in the URL in JSON",
-     *      tags={"tasks . . . to deal with tasks - crud operations -"},
+     *      tags={"Tasks - All CRUD operations -","Get a task","Show a task"},
      *     @SWG\Parameter(
      *         name="ID",
      *         type="integer",
@@ -136,6 +135,10 @@ class TasksController extends ApiController
      *         response=403,
      *         description="Forbidden - Authenticated, but does not have the permissions to perform an action"
      *     ),
+     *     @SWG\Response(
+     *         response=404,
+     *         description="Task Model NOT Found"
+     *     ),
      * )
      */
     public function show($id)
@@ -156,7 +159,7 @@ class TasksController extends ApiController
      * @SWG\Get(
      *     path="/tasks/{ID}/edit",  
      *     description="Edit - return the task that has the ID in the URL in JSON",
-     *      tags={"tasks . . . to deal with tasks - crud operations -"},
+     *      tags={"Tasks - All CRUD operations -","Edit a task","Get a task"},
      *     @SWG\Parameter(
      *         name="ID",
      *         type="integer",
@@ -192,16 +195,12 @@ class TasksController extends ApiController
      */
     public function edit($id)
     {
-        
-
         try {
             $task = Task::findOrFail($id);
         } catch (ModelNotFoundException $e) {
             return response()->json(
                 ['error' => 'Task Model NOT Found'], 404);
         }
-
-
 
         return response()->json(
             ['data'=>['task'=>new TaskResource($task)]]);
@@ -217,7 +216,7 @@ class TasksController extends ApiController
      * @SWG\Put(
      *     path="/tasks/{ID}",
      *     description="Update the task that has the ID in the URL",
-     *      tags={"tasks . . . to deal with tasks - crud operations -"},
+     *      tags={"Tasks - All CRUD operations -","Update a tasks"},
      *     @SWG\Parameter(
      *         name="description",
      *         in="body",
@@ -289,7 +288,7 @@ class TasksController extends ApiController
      * @SWG\Delete(
      *     path="/tasks/{ID}",
      *     description="Delete the task that has the ID in the URL",
-     *      tags={"tasks . . . to deal with tasks - crud operations -"},
+     *      tags={"Tasks - All CRUD operations -","Delete a task"},
      *     @SWG\Parameter(
      *         name="ID",
      *         type="integer",
@@ -339,7 +338,7 @@ class TasksController extends ApiController
      * @SWG\post(
      *     path="/tasks/{ID1}/{ID2}",
      *     description="Swap two tasks data (description and details) which have the ids ID1 and ID2 in the URL and return the new updated data in JSON",
-     *      tags={"tasks . . . to deal with tasks - crud operations -"},
+     *      tags={"Tasks - All CRUD operations -","Swap tasks data"},
      *     @SWG\Parameter(
      *         name="ID1",
      *         type="integer",

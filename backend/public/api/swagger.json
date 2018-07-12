@@ -14,7 +14,8 @@
         "/tasks": {
             "get": {
                 "tags": [
-                    "tasks . . . to deal with tasks - crud operations -"
+                    "Tasks - All CRUD operations -",
+                    "Get All tasks"
                 ],
                 "summary": "Get tasks",
                 "description": "Display a list of the tasks",
@@ -35,22 +36,12 @@
             },
             "post": {
                 "tags": [
-                    "tasks . . . to deal with tasks - crud operations -"
+                    "Tasks - All CRUD operations -",
+                    "Create a new task"
                 ],
                 "summary": "Store a task.",
                 "description": "Store the task in database and return it in JSON",
                 "parameters": [
-                    {
-                        "name": "details",
-                        "in": "query",
-                        "description": "Task details",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "This task is important because . . ."
-                        },
-                        "type": "string"
-                    },
                     {
                         "name": "description",
                         "in": "query",
@@ -59,6 +50,17 @@
                         "schema": {
                             "type": "string",
                             "example": "Task to do"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "details",
+                        "in": "query",
+                        "description": "Task details",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "This task is important because . . ."
                         },
                         "type": "string"
                     }
@@ -85,7 +87,9 @@
         "/tasks/{ID}": {
             "get": {
                 "tags": [
-                    "tasks . . . to deal with tasks - crud operations -"
+                    "Tasks - All CRUD operations -",
+                    "Get a task",
+                    "Show a task"
                 ],
                 "summary": "show a task by ID.",
                 "description": "Get the task that has ID in the URL in JSON",
@@ -113,12 +117,16 @@
                     },
                     "403": {
                         "description": "Forbidden - Authenticated, but does not have the permissions to perform an action"
+                    },
+                    "404": {
+                        "description": "Task Model NOT Found"
                     }
                 }
             },
             "put": {
                 "tags": [
-                    "tasks . . . to deal with tasks - crud operations -"
+                    "Tasks - All CRUD operations -",
+                    "Update a tasks"
                 ],
                 "summary": "Update a task by ID.",
                 "description": "Update the task that has the ID in the URL",
@@ -173,7 +181,8 @@
             },
             "delete": {
                 "tags": [
-                    "tasks . . . to deal with tasks - crud operations -"
+                    "Tasks - All CRUD operations -",
+                    "Delete a task"
                 ],
                 "summary": "Delete a task.",
                 "description": "Delete the task that has the ID in the URL",
@@ -211,7 +220,9 @@
         "/tasks/{ID}/edit": {
             "get": {
                 "tags": [
-                    "tasks . . . to deal with tasks - crud operations -"
+                    "Tasks - All CRUD operations -",
+                    "Edit a task",
+                    "Get a task"
                 ],
                 "summary": "Edit a task by ID.",
                 "description": "Edit - return the task that has the ID in the URL in JSON",
@@ -249,7 +260,8 @@
         "/tasks/{ID1}/{ID2}": {
             "post": {
                 "tags": [
-                    "tasks . . . to deal with tasks - crud operations -"
+                    "Tasks - All CRUD operations -",
+                    "Swap tasks data"
                 ],
                 "summary": "Swap the IDs of two tasks.",
                 "description": "Swap two tasks data (description and details) which have the ids ID1 and ID2 in the URL and return the new updated data in JSON",
