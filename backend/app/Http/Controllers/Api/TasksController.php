@@ -26,8 +26,20 @@ class TasksController extends ApiController
      *     tags={"tasks . . . to deal with tasks - crud operations -"},
      *     @SWG\Response(
      *         response=200,
-     *         description="Successful operation"
-     *     )
+     *         description="Successful operation - All data received"
+     *     ),
+     *     @SWG\Response(
+     *         response=400,
+     *         description="Bad operation - Fail to pass validation"
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error"
+     *     ),
+     *     @SWG\Response(
+     *         response=403,
+     *         description="Forbidden - Authenticated, but does not have the permissions to perform an action"
+     *     ),
      *     
      * )
      */
@@ -43,36 +55,51 @@ class TasksController extends ApiController
      * 
      * @SWG\Post(
      *     path="/tasks",
-     *     description="Store the task in database",
+     *     description="Store the task in database and return it in JSON",
      *     tags={"tasks . . . to deal with tasks - crud operations -"},
-     *     @SWG\Parameter(
-     *         name="description",
-     *         type="string",
-     *         in="body",
-     *         description="Task description",
-     *         required=true,
-     *     ),
      *     @SWG\Parameter(
      *         name="details",
      *         type="string",
-     *         in="body",
+     *         in="query",
      *         description="Task details",
      *         required=false,
+     *         @SWG\Schema(type="string",example="This task is important because . . ."),
      *     ),
+     *     @SWG\Parameter(
+     *         name="description",
+     *         type="string",
+     *         in="query",
+     *         description="Task description",
+     *         required=true,
+     *         @SWG\Schema(type="string",example="Task to do"),
+     *     ),
+
      *     @SWG\Response(
      *         response=200,
-     *         description="Successful operation",
+     *         description="Successful operation - task stored",
      *     ),
      *     @SWG\Response(
      *         response=422,
      *         description="Missing Data",
-     *     )
+     *     ),
+     *     @SWG\Response(
+     *         response=400,
+     *         description="Bad operation - Fail to pass validation"
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error"
+     *     ),
+     *     @SWG\Response(
+     *         response=403,
+     *         description="Forbidden - Authenticated, but does not have the permissions to perform an action"
+     *     ),
      * )
      */
     public function store(Request $request)
     {
         $task = Task::create($request->all());
-        return new TaskResource($task);
+        return response()->json(new TaskResource($task), 200);
     }
 
     /**
@@ -96,7 +123,19 @@ class TasksController extends ApiController
      *     @SWG\Response(
      *         response=422,
      *         description="Missing Data",
-     *     )
+     *     ),
+     *     @SWG\Response(
+     *         response=400,
+     *         description="Bad operation - Fail to pass validation"
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error"
+     *     ),
+     *     @SWG\Response(
+     *         response=403,
+     *         description="Forbidden - Authenticated, but does not have the permissions to perform an action"
+     *     ),
      * )
      */
     public function show($id)
@@ -106,7 +145,7 @@ class TasksController extends ApiController
         } catch (ModelNotFoundException $e) {
             return "error ModelNotFoundException";
         }
-        return response()->json(['data'=>['task'=>$task]]);
+        return response()->json(['data'=>['task'=>new TaskResource($task)]]);
     }
 
 
@@ -131,14 +170,27 @@ class TasksController extends ApiController
      *     ),
      *     @SWG\Response(
      *         response=422,
-     *         description="Missing Data"
-     *     )
+     *         description="Missing Data",
+     *     ),
+     *     @SWG\Response(
+     *         response=400,
+     *         description="Bad operation - Fail to pass validation"
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error"
+     *     ),
+     *     @SWG\Response(
+     *         response=403,
+     *         description="Forbidden - Authenticated, but does not have the permissions to perform an action"
+     *     ),
      * )
      */
     public function edit($id)
     {
         $task = Task::findOrFail($id);
-        return response()->json(['data'=>['task'=>$task]]);
+        return response()->json(
+            ['data'=>['task'=>new TaskResource($task)]]);
     }
 
 
@@ -158,6 +210,7 @@ class TasksController extends ApiController
      *         type="string",
      *         description="Description of the task",
      *         required=true,
+     *         @SWG\Schema(type="string",example="Task to do"),
      *     ),
      *     @SWG\Parameter(
      *         name="details",
@@ -165,6 +218,7 @@ class TasksController extends ApiController
      *         type="string",
      *         description="Details of the task",
      *         required=false,
+     *         @SWG\Schema(type="string",example="This task is important because . . ."),
      *     ),
      *     @SWG\Parameter(
      *         name="ID",
@@ -175,24 +229,39 @@ class TasksController extends ApiController
      *     ),
      *     @SWG\Response(
      *         response=200,
-     *         description="Successful operation",
+     *         description="Successful operation - Task updated",
      *     ),
      *     @SWG\Response(
-     *         response=422,
-     *         description="Missing Data"
-     *     )
+     *         response=404,
+     *         description="Task Model NOT Found"
+     *     ),
+     *     @SWG\Response(
+     *         response=400,
+     *         description="Bad operation - Fail to pass validation"
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error"
+     *     ),
+     *     @SWG\Response(
+     *         response=403,
+     *         description="Forbidden - Authenticated, but does not have the permissions to perform an action"
+     *     ),
      * )
      */
     public function update(Request $request, $id)
     {
+
         try {
             $task = Task::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return "error ModelNotFoundException";
+            return response()->json(
+                ['error' => 'Task Model NOT Found'], 404);
         }
-        
+
         $task->update($request->all());
-       
+
+        return response()->json(new TaskResource($task), 200);
     }
 
 
@@ -221,17 +290,29 @@ class TasksController extends ApiController
      *     @SWG\Response(
      *         response=422,
      *         description="Missing Data"
-     *     )
+     *     ),
      *     @SWG\Response(
      *         response=204,
-     *         description="Successful operation NO CONTENT"
-     *     )
+     *         description="Successful operation - NO CONTENT"
+     *     ),
+     *     @SWG\Response(
+     *         response=400,
+     *         description="Bad operation - Fail to pass validation"
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error"
+     *     ),
+     *     @SWG\Response(
+     *         response=403,
+     *         description="Forbidden - Authenticated, but does not have the permissions to perform an action"
+     *     ),
      * )
      */
     public function destroy($id)
     {
         Task::destroy($id);
-        return 204;
+        return response()->json(null, 204);;
     }
 
     
@@ -267,6 +348,18 @@ class TasksController extends ApiController
      *         response=422,
      *         description="Missing Data"
      *     ),
+     *     @SWG\Response(
+     *         response=400,
+     *         description="Bad operation - Fail to pass validation"
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error"
+     *     ),
+     *     @SWG\Response(
+     *         response=403,
+     *         description="Forbidden - Authenticated, but does not have the permissions to perform an action"
+     *     ),
      * )
      */
     public function swap($id1,$id2)
@@ -288,7 +381,9 @@ class TasksController extends ApiController
         $task1->save();
         $task2->save();
 
-        return response()->json(['data'=>['first'=>$task1,'second'=>$task2]]);
+        return response()->json(
+            ['data'=>['first'=>new TaskResource($task1),
+                      'second'=>new TaskResource($task2)]]);
 
     }
 
