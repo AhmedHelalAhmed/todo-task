@@ -222,11 +222,16 @@ class TasksController extends ApiController
      *         response=422,
      *         description="Missing Data"
      *     )
+     *     @SWG\Response(
+     *         response=204,
+     *         description="Successful operation NO CONTENT"
+     *     )
      * )
      */
     public function destroy($id)
     {
         Task::destroy($id);
+        return 204;
     }
 
     
