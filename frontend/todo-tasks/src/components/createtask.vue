@@ -76,7 +76,7 @@ export default {
         this.$emit('createTask', true);
         this.$emit('changeView', false);
         this.$router.push('/');
-        console.log("in createtask method");
+        // console.log("in createtask method");
       });
     },
     back() {

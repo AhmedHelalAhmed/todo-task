@@ -47,17 +47,22 @@ export default {
       */
       //add to backend
       this.$http.post("http://todoapi.local/api/tasks", {
+
         description: this.description
+
       }, {
+
         emulateJSON: true
 
       }).then(function(response) {
 
+        // console.log(response.data);
+        
         //reset the description
         this.description = "";
 
         //add to frontend
-        this.$emit('addTask', response.data.data);
+        this.$emit('addTask', response.data);
       });
 
     },
