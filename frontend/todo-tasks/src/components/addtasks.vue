@@ -46,7 +46,7 @@ export default {
         and set it with new value that is entered
       */
       //add to backend
-      this.$http.post("http://127.0.0.1:8000/api/tasks", {
+      this.$http.post("http://todoapi.local/api/tasks", {
         description: this.description
       }, {
         emulateJSON: true

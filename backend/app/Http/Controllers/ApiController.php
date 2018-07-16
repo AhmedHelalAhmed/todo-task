@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
  *
  * @SWG\Swagger(
  *     basePath="/api/",
- *     host="localhost:8000",
+ *     host="todoapi.local",
  *     @SWG\Info(
  *         version="1.0",
  *         title="ToDo",

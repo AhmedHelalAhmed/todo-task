@@ -8,7 +8,7 @@
         },
         "version": "1.0"
     },
-    "host": "localhost:8000",
+    "host": "todoapi.local",
     "basePath": "/api/",
     "paths": {
         "/tasks": {
