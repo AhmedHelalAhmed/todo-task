@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
         // a JSON response.
         if ($exception instanceof ModelNotFoundException) {
             return response()->json([
-                'error' => 'Resource not found'
+                'error' => 'Resource not found or Unauthenticated'
             ], 404);
         }
 
@@ -60,7 +60,7 @@ class Handler extends ExceptionHandler
         if ($request->wantsJson())
         {
             return response()->json([
-                'data' => 'Resource not found'
+                'data' => 'Resource not found or Unauthenticated'
             ], 404);
         }
 
