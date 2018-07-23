@@ -22,17 +22,21 @@
       <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
-    <div class="form-group">
-      <label for="confirmpassword">Confirm Password</label>
-      <input type="password" class="form-control" id="confirmpassword" placeholder="confirmpassword" v-model='confirmpassword' v-on:keyup.enter="submit">
-    </div>
+
 
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" class="form-control" id="password" placeholder="Password" v-model='password' v-on:keyup.enter="submit">
     </div>
 
-    <button type="submit" class="btn btn-primary" v-on:click="submit">Ok</button>
+
+    <div class="form-group">
+      <label for="confirmpassword">Confirm Password</label>
+      <input type="password" class="form-control" id="confirmpassword" placeholder="confirmpassword" v-model='confirmpassword' v-on:keyup.enter="submit">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" v-on:click="submit">Sign up</button>
   </form>
 
 
@@ -57,13 +61,12 @@ export default {
     submit(){
       this.submitStatus=true;
       if(this.name&&this.password&&this.confirmpassword&&this.email){
-        let site = "http://todoapi.local/register";
+        let site = "http://todoapi.local/api/register";
 
         let data = {
             name: this.name,
             email: this.email,
-            password: this.password,
-            confirmpassword: this.confirmpassword,}
+            password: this.password}
 
           this.$http.post(site,data,{emulateJSON: true}).then(response =>{
             console.log(response);

@@ -40,10 +40,10 @@ export default {
 
         let data = {
             client_id: 2,
-            client_secret: "8mt7lOeIajgzCA0NwdcW1B9O70Gj9pEua3OD5zZN",
+            client_secret: "cAorAn45535ku5tWkxAHy6ooG3OZMJGALOvPNpEn",
             grant_type: "password",
-            username: "ahmed.helal.online@gmail.com",
-            password: "123456"}
+            username: this.username,
+            password: this.password}
 
           this.$http.post(site,data,{emulateJSON: true}).then(response =>{
             let token = response.body.access_token;
