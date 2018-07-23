@@ -1,9 +1,8 @@
 import editTask from './components/edittask.vue'
 import showTask from './components/showtask.vue'
 import createTask from './components/createtask.vue'
-import authorizedClients from './components/AuthorizedClients.vue'
-import Clients from './components/Clients.vue'
-import PersonalAccessTokens from './components/PersonalAccessTokens.vue'
+import registration from './components/registration.vue'
+import login from './components/login.vue'
 
 export default [{
     path: "/show/:id",
@@ -21,18 +20,14 @@ export default [{
     name: 'createtask'
   },
   {
-    path: "/authorizedclients",
-    component: authorizedClients,
-    name: 'authorizedclients'
+    path: "/login",
+    component: login,
+    name: 'login'
   },
   {
-    path: "/clients",
-    component: Clients,
-    name: 'clients'
+    path: "/registration",
+    component: registration,
+    name: 'registration'
   },
-  {
-    path: "/personalaccesstokens",
-    component: PersonalAccessTokens,
-    name: 'personalaccesstokens'
-  },
+
 ]

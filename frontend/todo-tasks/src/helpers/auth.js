@@ -1,24 +1,24 @@
 export default function (Vue){
 Vue.auth = {
 
-
-  isAuth:() => {
+  isAuth(){
     return "Ahmed Helal";
   },
-  deleteToken:() => {
+  deleteToken(){
     return "Ahmed Helal";
   },
-  setAuthenticatedUser:() => {
+  setAuthenticatedUser() {
     return "Ahmed Helal";
   },
-  getAuthenticatedUser:() => {
+  getAuthenticatedUser() {
     return "Ahmed Helal";
   },
-  setToken:() => {
-    return "Ahmed Helal";
+  setToken(access_token,expires_in) {
+    localStorage.setItem('access_token',access_token);
+    localStorage.setItem('expires_in',expires_in);
   },
-  getToken:() => {
-    return "Ahmed Helal";
+  getToken() {
+    return localStorage.getItem('access_token');
   }
 
 
@@ -35,5 +35,7 @@ Object.defineProperties(Vue.prototype,{
     }
   }
 })
+
+
 
 }

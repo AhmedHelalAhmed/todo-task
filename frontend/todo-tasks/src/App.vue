@@ -19,7 +19,7 @@
   </router-view>
 
 
-  <auth></auth>
+  <!-- <login></login> -->
 
   <div
     v-on:click="callCreateTask()"
@@ -39,7 +39,7 @@ import ShowTasks from './components/showtasks.vue'
 import CreateTask from './components/createtask.vue'
 import ShowTask from './components/showtask.vue'
 import EditTask from './components/edittask.vue'
-import Auth from './components/auth.vue'
+import Login from './components/login.vue'
 // import {bus} from './main';
 
 
@@ -48,7 +48,7 @@ export default {
     'addtasks': AddTasks,
     'showtasks': ShowTasks,
     'createtask': CreateTask,
-    'auth': Auth,
+    'login': Login,
   },
 
 
