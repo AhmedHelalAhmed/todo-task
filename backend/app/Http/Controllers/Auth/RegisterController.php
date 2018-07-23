@@ -69,33 +69,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        return response()->
     }
 
 
 
     
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->create($request->all())));
-
-        $this->guard()->login($user);
-
-        if($request->ajax()){
-            // If request from AJAX
-            return ['success' => true];
-        } else {
-            // Normal POST do redirect
-            return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
-        }
-        
-    }
 }
