@@ -1,7 +1,7 @@
 import editTask from './components/edittask.vue'
 import showTask from './components/showtask.vue'
 import createTask from './components/createtask.vue'
-import registration from './components/registration.vue'
+import registeration from './components/registeration.vue'
 import login from './components/login.vue'
 
 export default [{
@@ -25,9 +25,9 @@ export default [{
     name: 'login'
   },
   {
-    path: "/registration",
-    component: registration,
-    name: 'registration'
+    path: "/register",
+    component: registeration,
+    name: 'registeration'
   },
 
 ]

@@ -51,18 +51,19 @@ class Handler extends ExceptionHandler
         // a JSON response.
         if ($exception instanceof ModelNotFoundException) {
             return response()->json([
-                'error' => 'Resource not found or Unauthenticated'
+                'error' => 'Resource not found or Unauthenticated or error @Ahmed Helal@'
             ], 404);
         }
 
         // This will replace our 404 response with
         // a JSON response.
-        if ($request->wantsJson())
-        {
-            return response()->json([
-                'data' => 'Resource not found or Unauthenticated'
-            ], 404);
-        }
+        // this will happen when errors appear from validation which is wrong
+//        if ($request->wantsJson())
+//        {
+//            return response()->json([
+//                'data' => 'Resource not found or Unauthenticated or error @Ahmed Helal@'
+//            ], 404);
+//        }
 
         return parent::render($request, $exception);
     }
