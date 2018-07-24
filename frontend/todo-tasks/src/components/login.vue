@@ -44,9 +44,9 @@ export default {
         let site_for_token = "http://todoapi.local/oauth/token";
         this.$auth.login(this,site_for_token,this.user);
 
-        let site_for_user_object = "http://todoapi.local/api/user";
+        // let site_for_user_object = "http://todoapi.local/api/user";
 
-        this.$auth.setAuthenticatedUser(this,site_for_user_object);
+        // this.$auth.setAuthenticatedUser(this,site_for_user_object);
       }
 
 

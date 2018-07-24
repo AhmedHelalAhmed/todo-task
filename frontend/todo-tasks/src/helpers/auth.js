@@ -1,5 +1,5 @@
 export default function (Vue) {
-  let authenticatedUser;
+
   Vue.auth = {
 
     register(vue, site, user) {
@@ -53,16 +53,15 @@ export default function (Vue) {
 
 
     isAuth() {
-      let time_now_in_milliseconds = new Date().getTime();
-      let expiration_time_in_milliseconds = localStorage.getItem('expires_in');
-      if (time_now_in_milliseconds > expiration_time_in_milliseconds) {
-        this.deleteToken();
+      if(this.getToken()){
+        return true;
       }
-
-      return this.getToken() ? true : false;
+     return false  ;
     },
     deleteToken() {
-      return "Ahmed Helal";
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('expires_in');
+      localStorage.removeItem('time_now');
     },
     setAuthenticatedUser(user) {
       authenticatedUser = user
@@ -73,15 +72,32 @@ export default function (Vue) {
     setToken(access_token, expires_in) {
       localStorage.setItem('access_token', access_token);
       localStorage.setItem('expires_in', expires_in);
+      localStorage.setItem('time_now',new Date().getTime());
     },
     getToken() {
-      return localStorage.getItem('access_token');
+
+      let token_stored_time = localStorage.getItem('time_now');
+      let expiration_time = localStorage.getItem('expires_in');
+      let token = localStorage.getItem('access_token');
+
+      if(! token || ! expiration_time || !token_stored_time){
+        return null;
+      }
+
+      let time_now = new Date().getTime();
+      let spend_time_until_now = time_now-token_stored_time;
+
+
+      if(spend_time_until_now > expiration_time){
+        this.deleteToken();
+        return null;
+      }
+
+
+      return token;
     },
 
-    makeUserObject()
-    {
-      return localStorage.set
-    }
+
 
   }
 

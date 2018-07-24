@@ -17,6 +17,20 @@ Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Auth);
 
+// Vue.http.options.root = "http://localhost:8000"
+
+// if(Vue.auth.isAuth()){
+//   Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
+// }
+
+
+// Vue.http.options.emulateJSON = true;
+
+
+
+
+Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
+Vue.http.headers.common['Accept'] = 'application/json';
 
 
 
@@ -31,7 +45,7 @@ router.beforeEach(
   (to, from, next) => {
 
     if (to.matched.some(record => record.meta.forVisitors)) {
-      if (Vue.auth.isAuth()) {
+      if (Vue.auth.isAuth(Vue)) {
         next({
           path: 'youarelogin'
         })
@@ -41,7 +55,7 @@ router.beforeEach(
       }
     }
     else if (to.matched.some(record => record.meta.forAuth)) {
-      if (!Vue.auth.isAuth()) {
+      if (!Vue.auth.isAuth(Vue)) {
         next({
           path: '/login'
         })

@@ -87,10 +87,20 @@ export default {
     // bus.$emit('send_data',[this.app_key,this.app_create_key]);
 
 
-    //
-    // if(this.$auth.isAuth()){
-    //   this.http.headers.common['Authorization'] = this.$auth.getToken();
-    // }
+    let site = "http://todoapi.local/api/user";
+    var token = 'Bearer ' + this.$auth.getToken();
+
+
+
+
+    this.$http.get(site,{}, {
+      headers: {
+        Authorization: token,
+        Accept:"application/json"
+      }
+    }).then(response => {
+        console.log(response);
+    });
 
   },
 
