@@ -28,7 +28,7 @@ export default {
     return {
       user: {
         client_id: 2,
-        client_secret: "cAorAn45535ku5tWkxAHy6ooG3OZMJGALOvPNpEn",
+        client_secret: "8mt7lOeIajgzCA0NwdcW1B9O70Gj9pEua3OD5zZN",
         grant_type: "password",
         email: '',
         password: '',
@@ -41,10 +41,16 @@ export default {
     submit(){
       this.submitStatus=true;
       if(this.user.email&&this.user.password){
-        let site = "http://todoapi.local/oauth/token";
-        this.$auth.login(this,site,this.user);
+        let site_for_token = "http://todoapi.local/oauth/token";
+        this.$auth.login(this,site_for_token,this.user);
+
+        let site_for_user_object = "http://todoapi.local/api/user";
+
+        this.$auth.setAuthenticatedUser(this,site_for_user_object);
       }
 
+
+      this.$router.push('/');
     },
 
   },

@@ -10,7 +10,7 @@
   </div>
 
 
-  <form v-on:submit.prevent>
+  <form @submit.prevent="submit" method="post">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="name" class="form-control" id="name" aria-describedby="name" placeholder="Enter name" v-model='user.name' v-on:keyup.enter="submit">
@@ -36,7 +36,7 @@
     </div>
 
 
-    <button type="submit" class="btn btn-primary" v-on:click="submit">Sign up</button>
+    <button type="submit" class="btn btn-primary" >Sign up</button>
   </form>
 
 
@@ -72,6 +72,14 @@ export default {
           let site = "http://todoapi.local/api/register";
           this.$auth.register(this,site,this.user);
         }
+
+        this.$http.get('http://todoapi.local/api/user').then((res)=>{
+          console.log(res);
+        });
+
+        this.$router.push('/');
+
+
 
     },
 

@@ -7,27 +7,42 @@ import login from './components/login.vue'
 export default [{
     path: "/show/:id",
     name: 'showtask',
-    component: showTask
+    component: showTask,
+    meta: {
+      forAuth: true
+    }
   },
   {
     path: "/edit/:id",
     name: "edittask",
-    component: editTask
+    component: editTask,
+    meta: {
+      forAuth: true
+    }
   },
   {
     path: "/create",
     component: createTask,
-    name: 'createtask'
+    name: 'createtask',
+    meta: {
+      forAuth: true
+    }
   },
   {
     path: "/login",
     component: login,
-    name: 'login'
+    name: 'login',
+    meta: {
+      forVisitors: true
+    }
   },
   {
     path: "/register",
     component: registeration,
-    name: 'registeration'
+    name: 'registeration',
+    meta: {
+      forVisitors: true
+    }
   },
 
 ]

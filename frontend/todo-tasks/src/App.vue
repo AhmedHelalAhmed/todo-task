@@ -87,6 +87,11 @@ export default {
     // bus.$emit('send_data',[this.app_key,this.app_create_key]);
 
 
+    //
+    // if(this.$auth.isAuth()){
+    //   this.http.headers.common['Authorization'] = this.$auth.getToken();
+    // }
+
   },
 
 }

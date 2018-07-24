@@ -7,15 +7,9 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import Auth from './helpers/auth.js'
 
 
-
-
-
 // Import the styles directly. (Or you could add them via script tags.)
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-
-
-
 
 
 Vue.use(VueResource);
@@ -23,16 +17,47 @@ Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Auth);
 
+
+
+
 const router = new VueRouter({
   routes: Routes,
   // mode: 'history' //to make the routes without #
 });
 
 
+//this called when ever the navigation trigger
+router.beforeEach(
+  (to, from, next) => {
 
-Vue.prototype.$auth = Auth;
+    if (to.matched.some(record => record.meta.forVisitors)) {
+      if (Vue.auth.isAuth()) {
+        next({
+          path: 'youarelogin'
+        })
+      }
+      else {
+        next();
+      }
+    }
+    else if (to.matched.some(record => record.meta.forAuth)) {
+      if (!Vue.auth.isAuth()) {
+        next({
+          path: '/login'
+        })
+      }
+      else {
+        next();
+      }
+    }
+    else {
+      next();
+    }
+  }
+);
 
-export const bus = new Vue();
+
+// export const bus = new Vue();
 
 // export const test = "test";
 
