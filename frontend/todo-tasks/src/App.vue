@@ -1,37 +1,41 @@
 <template>
-<div class="container text-center">
-  <h1>{{title}}</h1>
+  <div>
+    <app-header></app-header>
+    <div class="container text-center">
+      <h1>{{title}}</h1>
 
-  <addtasks
-    v-if="app_key&&app_create_key&&!route_name&&false"
-    v-on:addTask="listenToAddTask($event)">
-  </addtasks>
+      <addtasks
+        v-if="app_key&&app_create_key&&!route_name&&false"
+        v-on:addTask="listenToAddTask($event)">
+      </addtasks>
 
-  <showtasks
-    v-if="app_key&&app_create_key&&!route_name&&false"
-    v-bind:newTask="tasks"
-    v-on:changeView="listenToChangeView($event)">
-  </showtasks>
+      <showtasks
+        v-if="app_key&&app_create_key&&!route_name&&false"
+        v-bind:newTask="tasks"
+        v-on:changeView="listenToChangeView($event)">
+      </showtasks>
 
-  <router-view
-    v-on:changeView="listenToChangeView($event)&&false"
-    v-on:createTask="listenToCreateTask($event)">
-  </router-view>
+      <router-view
+        v-on:changeView="listenToChangeView($event)&&false"
+        v-on:createTask="listenToCreateTask($event)">
+      </router-view>
 
 
-  <!-- <login></login> -->
+      <!-- <login></login> -->
 
-  <div
-    v-on:click="callCreateTask()"
-    v-if="app_create_key&&app_key&&!route_name&&false">
-      <router-link
-        :to="{path: '/create'}"
-        class="btn btn-success">
-        Create a Task
-      </router-link>
+      <div
+        v-on:click="callCreateTask()"
+        v-if="app_create_key&&app_key&&!route_name&&false">
+        <router-link
+          :to="{path: '/create'}"
+          class="btn btn-success">
+          Create a Task
+        </router-link>
+      </div>
+
+    </div>
+    <app-footer></app-footer>
   </div>
-
-</div>
 </template>
 <script>
 import AddTasks from './components/addtasks.vue'
@@ -40,6 +44,9 @@ import CreateTask from './components/createtask.vue'
 import ShowTask from './components/showtask.vue'
 import EditTask from './components/edittask.vue'
 import Login from './components/login.vue'
+import Header from './components/header.vue'
+import Footer from './components/footer.vue'
+
 // import {bus} from './main';
 
 
@@ -49,6 +56,8 @@ export default {
     'showtasks': ShowTasks,
     'createtask': CreateTask,
     'login': Login,
+    'app-header': Header,
+    'app-footer': Footer,
   },
 
 

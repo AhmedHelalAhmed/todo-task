@@ -19,11 +19,6 @@ Vue.use(Auth);
 
 // Vue.http.options.root = "http://localhost:8000"
 
-// if(Vue.auth.isAuth()){
-//   Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
-// }
-
-
 // Vue.http.options.emulateJSON = true;
 
 
