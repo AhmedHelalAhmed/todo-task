@@ -28,10 +28,10 @@ Vue.use(Auth);
 
 
 
-
-Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
-Vue.http.headers.common['Accept'] = 'application/json';
-
+if(Vue.auth.isAuth()) {
+  Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
+  Vue.http.headers.common['Accept'] = 'application/json';
+}
 
 
 const router = new VueRouter({

@@ -39,12 +39,45 @@ export default function (Vue) {
       vue.$http.post(site, data, {
         emulateJSON: true
       }).then(response => {
+
+
+
+        //---------- save token ----------//
         let token = response.body.access_token;
         let expiration = response.body.expires_in;
         this.setToken(token, expiration);
         alert("token saved");
-      });
+        //---------- save token ----------//
 
+
+
+
+
+
+        //---------- save Authenticated User ----------//
+        let site = "http://todoapi.local/api/user";
+        let token00 = 'Bearer ' + this.getToken();
+
+        vue.$http.get(site,{}, {
+          headers: {
+            Authorization: token00,
+            Accept:"application/json"
+          }
+        }).then(response => {
+          this.setAuthenticatedUser(response.body)
+          alert("AuthenticatedUser saved");
+
+
+          vue.$router.push('/');
+        });
+        //---------- save Authenticated User ----------//
+
+
+
+
+
+
+      });
 
 
 
@@ -64,10 +97,10 @@ export default function (Vue) {
       localStorage.removeItem('time_now');
     },
     setAuthenticatedUser(user) {
-      authenticatedUser = user
+      localStorage.setItem('authenticatedUser', JSON.stringify(user));
     },
     getAuthenticatedUser() {
-      return authenticatedUser;
+      return JSON.parse(localStorage.getItem('authenticatedUser'));
     },
     setToken(access_token, expires_in) {
       localStorage.setItem('access_token', access_token);
@@ -80,18 +113,21 @@ export default function (Vue) {
       let expiration_time = localStorage.getItem('expires_in');
       let token = localStorage.getItem('access_token');
 
-      if(! token || ! expiration_time || !token_stored_time){
-        return null;
-      }
-
-      let time_now = new Date().getTime();
-      let spend_time_until_now = time_now-token_stored_time;
 
 
-      if(spend_time_until_now > expiration_time){
-        this.deleteToken();
-        return null;
-      }
+
+      // if(!token || !expiration_time || !token_stored_time){
+      //   return null;
+      // }
+      //
+      // let time_now = new Date().getTime();
+      // let spend_time_until_now = time_now-token_stored_time;
+      //
+      //
+      // if(spend_time_until_now > expiration_time){
+      //   this.deleteToken();
+      //   return null;
+      // }
 
 
       return token;
