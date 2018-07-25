@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72a847e0-f518-48b5-a362-431312bf2d5f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/todo-tasks/src/components/footer.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/todo-tasks/src/components/header.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/todo-tasks/src/components/welcome.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/todo-tasks/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/todo-tasks/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/todo-tasks/src/helpers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/todo-tasks/src/helpers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/todo-tasks/src/components/footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/todo-tasks/src/components/footer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/todo-tasks/src/components/header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/todo-tasks/src/components/header.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,20 +20,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="auth.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/helpers/auth.js">
+      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="817">
-              <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+            <state relative-caret-position="152">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registeration.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/components/registeration.vue">
+      <file leaf-file-name="header.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/components/header.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="70" column="25" lean-forward="true" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+            <state relative-caret-position="437">
+              <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -68,16 +66,17 @@
         <option value="$PROJECT_DIR$/frontend/todo-tasks/src/routes.js" />
         <option value="$PROJECT_DIR$/backend/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/backend/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/frontend/todo-tasks/src/main.js" />
         <option value="$PROJECT_DIR$/backend/app/Http/Middleware/Cors.php" />
         <option value="$PROJECT_DIR$/frontend/todo-tasks/src/components/login.vue" />
         <option value="$PROJECT_DIR$/frontend/todo-tasks/src/components/registeration.vue" />
         <option value="$PROJECT_DIR$/backend/app/Task.php" />
         <option value="$PROJECT_DIR$/backend/app/User.php" />
-        <option value="$PROJECT_DIR$/frontend/todo-tasks/src/App.vue" />
-        <option value="$PROJECT_DIR$/frontend/todo-tasks/src/components/footer.vue" />
-        <option value="$PROJECT_DIR$/frontend/todo-tasks/src/components/header.vue" />
         <option value="$PROJECT_DIR$/frontend/todo-tasks/src/helpers/auth.js" />
+        <option value="$PROJECT_DIR$/frontend/todo-tasks/src/main.js" />
+        <option value="$PROJECT_DIR$/frontend/todo-tasks/src/components/welcome.vue" />
+        <option value="$PROJECT_DIR$/frontend/todo-tasks/src/components/footer.vue" />
+        <option value="$PROJECT_DIR$/frontend/todo-tasks/src/App.vue" />
+        <option value="$PROJECT_DIR$/frontend/todo-tasks/src/components/header.vue" />
       </list>
     </option>
   </component>
@@ -231,14 +230,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="todo-task" type="b2602c69:ProjectViewProjectNode" />
-              <item name="todo-task" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="todo-tasks" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -284,12 +275,12 @@
       <workItem from="1532378001276" duration="1131000" />
       <workItem from="1532424760955" duration="20027000" />
       <workItem from="1532507498247" duration="5997000" />
-      <workItem from="1532513528026" duration="4132000" />
+      <workItem from="1532513528026" duration="6951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37701000" />
+    <option name="totallyTimeSpent" value="40520000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -304,7 +295,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.17136659" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.47722343" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -420,13 +411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/app/Http/Kernel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -443,16 +427,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -484,26 +458,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/components/footer.vue">
+    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/components/header.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="47" column="7" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="988">
+          <caret line="53" column="14" lean-forward="true" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
           <folding>
-            <element signature="e#826#874#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -517,8 +477,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/helpers/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+        <state relative-caret-position="209">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/components/footer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/components/welcome.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/components/showtasks.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/todo-tasks/src/components/header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
         </state>
       </provider>
     </entry>

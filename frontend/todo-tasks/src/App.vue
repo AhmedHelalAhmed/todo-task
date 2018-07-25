@@ -2,7 +2,11 @@
   <div>
     <app-header></app-header>
     <div class="container text-center">
-      <h1>{{title}}</h1>
+
+
+
+
+
 
       <addtasks
         v-if="app_key&&app_create_key&&!route_name&&false"
@@ -34,6 +38,8 @@
       </div>
 
     </div>
+
+    <welcome></welcome>
     <app-footer></app-footer>
   </div>
 </template>
@@ -46,7 +52,7 @@ import EditTask from './components/edittask.vue'
 import Login from './components/login.vue'
 import Header from './components/header.vue'
 import Footer from './components/footer.vue'
-
+import Welcome from './components/welcome.vue'
 // import {bus} from './main';
 
 
@@ -58,6 +64,7 @@ export default {
     'login': Login,
     'app-header': Header,
     'app-footer': Footer,
+    'welcome': Welcome,
   },
 
 
