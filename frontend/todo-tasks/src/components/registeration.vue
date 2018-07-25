@@ -13,12 +13,12 @@
   <form @submit.prevent="submit" method="post">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="name" class="form-control" id="name" aria-describedby="name" placeholder="Enter name" v-model='user.name' v-on:keyup.enter="submit">
+      <input type="name" class="form-control" id="name" aria-describedby="name" placeholder="Enter name" v-model='user.name' >
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" v-model='user.email' v-on:keyup.enter="submit">
+      <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" v-model='user.email' >
       <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
@@ -26,13 +26,13 @@
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password" v-model='user.password' v-on:keyup.enter="submit">
+      <input type="password" class="form-control" id="password" placeholder="Password" v-model='user.password' >
     </div>
 
 
     <div class="form-group">
       <label for="password_confirmation">Confirm Password</label>
-      <input type="password" class="form-control" id="password_confirmation" placeholder="confirmPassword" v-model='user.password_confirmation' v-on:keyup.enter="submit">
+      <input type="password" class="form-control" id="password_confirmation" placeholder="confirmPassword" v-model='user.password_confirmation' >
     </div>
 
 

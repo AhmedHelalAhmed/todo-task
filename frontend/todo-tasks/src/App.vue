@@ -85,9 +85,6 @@ export default {
   },
   created() {
     // bus.$emit('send_data',[this.app_key,this.app_create_key]);
-
-    console.log("getAuthenticatedUser ",this.$auth.getAuthenticatedUser())
-
   },
 
 }

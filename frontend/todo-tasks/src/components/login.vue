@@ -4,19 +4,19 @@
     <div class="alert alert-danger" role="alert" v-if="!user.email">Email is empty!</div>
     <div class="alert alert-danger" role="alert" v-if="!user.password">Password is empty!</div>
   </div>
-  <form v-on:submit.prevent>
+  <form @submit.prevent="submit">
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" v-model='user.email' v-on:keyup.enter="submit">
+      <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email" v-model='user.email' >
       <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password" v-model='user.password' v-on:keyup.enter="submit">
+      <input type="password" class="form-control" id="password" placeholder="Password" v-model='user.password' >
     </div>
     <div class="form-group form-check">
     </div>
-    <button type="submit" class="btn btn-primary" v-on:click="submit">Login</button>
+    <button type="submit" class="btn btn-primary" >Login</button>
   </form>
 </div>
 
