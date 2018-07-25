@@ -17,7 +17,7 @@ Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Auth);
 
-// Vue.http.options.root = "http://localhost:8000"
+Vue.http.options.root = "http://localhost:8000";
 
 // Vue.http.options.emulateJSON = true;
 

@@ -1,26 +1,61 @@
 <template>
   <div>
     <app-header></app-header>
-    <div class="container text-center">
 
 
 
 
+    <div v-if="!this.$auth.isAuth()&&this.$route.name!='/'" class="container text-center">
+      <router-view></router-view>
+    </div>
 
 
+
+    <div v-if="!this.$auth.isAuth()&&this.$route.name=='/'" class="container text-center notAuth">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="media">
+            <a class="pull-left" href="#">
+
+              <img class="media-object dp img-circle" src="http://img.app-liv.jp.s3.amazonaws.com/icon/003090831/26a250e865c6d36819efbe6badcee2f1.png" style="width: 100px;height:100px;">
+
+            </a>
+            <div class="media-body">
+
+
+
+              <h4 class="media-heading">Welcome in <span>TODO</span> please</h4>
+
+
+
+              <hr style="margin:8px auto">
+
+              <h3><small><router-link  :to="{path: '/login'}" class="py-2 d-none d-md-inline-block">Login</router-link></small> or <small><router-link v-if="!this.$auth.isAuth()" :to="{path: '/register'}" class="py-2 d-none d-md-inline-block">Register</router-link></small></h3>
+
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <div v-if="this.$auth.isAuth()" class="container text-center">
       <addtasks
-        v-if="app_key&&app_create_key&&!route_name&&false"
+        v-if="app_key&&app_create_key&&!route_name"
         v-on:addTask="listenToAddTask($event)">
       </addtasks>
 
       <showtasks
-        v-if="app_key&&app_create_key&&!route_name&&false"
+        v-if="app_key&&app_create_key&&!route_name"
         v-bind:newTask="tasks"
         v-on:changeView="listenToChangeView($event)">
       </showtasks>
 
       <router-view
-        v-on:changeView="listenToChangeView($event)&&false"
+        v-on:changeView="listenToChangeView($event)"
         v-on:createTask="listenToCreateTask($event)">
       </router-view>
 
@@ -29,7 +64,7 @@
 
       <div
         v-on:click="callCreateTask()"
-        v-if="app_create_key&&app_key&&!route_name&&false">
+        v-if="app_create_key&&app_key&&!route_name">
         <router-link
           :to="{path: '/create'}"
           class="btn btn-success">
@@ -39,7 +74,6 @@
 
     </div>
 
-    <welcome></welcome>
     <app-footer></app-footer>
   </div>
 </template>
@@ -52,7 +86,7 @@ import EditTask from './components/edittask.vue'
 import Login from './components/login.vue'
 import Header from './components/header.vue'
 import Footer from './components/footer.vue'
-import Welcome from './components/welcome.vue'
+
 // import {bus} from './main';
 
 
@@ -64,7 +98,6 @@ export default {
     'login': Login,
     'app-header': Header,
     'app-footer': Footer,
-    'welcome': Welcome,
   },
 
 
@@ -100,18 +133,48 @@ export default {
 
   },
   created() {
-    // bus.$emit('send_data',[this.app_key,this.app_create_key]);
+
   },
+  mounted(){
+
+    if(this.$auth.isAuth()){
+      //---------- start save Authenticated User ----------//
+      let site = "api/user";
+      this.$http.get(site).then(response => {
+        console.log(response)
+        this.$auth.setAuthenticatedUser(response.body)
+        alert("AuthenticatedUser saved");
+        this.$router.push('/');
+      });
+    }
+
+    // bus.$emit('send_data',[this.app_key,this.app_create_key]);
+
+
+  }
 
 }
 </script>
 
 <style scoped>
 
+  div .notAuth{
+    margin-top: 350px;
+    margin-right: 44px;
+  }
 
-h1 {
-  color: purple
-}
+  .media-heading span{
+    color: red;
+    font-weight: bold;
+  }
 
+
+  h1 {
+    color: purple
+  }
+
+  a{
+    color: #001b44;
+  }
 
 </style>

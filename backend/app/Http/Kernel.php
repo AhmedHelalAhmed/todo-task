@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
         \App\Http\Middleware\Cors::class, //to make the middleware global
+//        \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
     ];
 
     /**
@@ -36,7 +37,6 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\Cors::class, //to make the middleware global
 
         ],
 
@@ -64,6 +64,5 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         //To solve the problem Access-Control-Allow-Origin
-        'cors' => \App\Http\Middleware\Cors::class, 
     ];
 }

@@ -32,7 +32,7 @@
     },
     created(){
     this.$http
-    .get("http://todoapi.local/api/tasks/"+this.id)
+    .get("/api/tasks/"+this.id)
     .then(function(response){
       this.description=response.data.data.task.description;
       this.details=response.data.data.task.details;

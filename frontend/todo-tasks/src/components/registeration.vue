@@ -1,4 +1,5 @@
 <template>
+<div class="container">
 
 
 <div class="text-left">
@@ -43,6 +44,7 @@
 
 </div>
 
+</div>
 </template>
 
 <script>
@@ -69,11 +71,11 @@ export default {
         this.user.password&&
         this.user.password_confirmation&&
         this.user.email){
-          let site = "http://todoapi.local/api/register";
+          let site = "/api/register";
           this.$auth.register(this,site,this.user);
         }
 
-        this.$http.get('http://todoapi.local/api/user').then((res)=>{
+        this.$http.get('/api/user').then((res)=>{
           console.log(res);
         });
 

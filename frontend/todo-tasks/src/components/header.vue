@@ -7,8 +7,8 @@
         </router-link>
         <a class="py-2 d-none d-md-inline-block" href="#">My Tasks</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Add Task</a>
-        <router-link :to="{path: '/login'}" class="py-2 d-none d-md-inline-block">Login</router-link>
-        <router-link :to="{path: '/register'}" class="py-2 d-none d-md-inline-block">Register</router-link>
+        <router-link v-if="!this.$auth.isAuth()" :to="{path: '/login'}" class="py-2 d-none d-md-inline-block">Login</router-link>
+        <router-link v-if="!this.$auth.isAuth()" :to="{path: '/register'}" class="py-2 d-none d-md-inline-block">Register</router-link>
       </div>
     </nav>
   </header>

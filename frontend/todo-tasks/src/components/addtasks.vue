@@ -46,7 +46,7 @@ export default {
         and set it with new value that is entered
       */
       //add to backend
-      this.$http.post("http://todoapi.local/api/tasks", {
+      this.$http.post("api/tasks", {
 
         description: this.description
 
@@ -57,7 +57,7 @@ export default {
       }).then(function(response) {
 
         // console.log(response.data);
-        
+
         //reset the description
         this.description = "";
 

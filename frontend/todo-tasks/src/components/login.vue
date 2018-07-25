@@ -1,4 +1,7 @@
 <template>
+  <div class="container">
+
+
 <div class="text-left">
   <div class="status" v-if="submitStatus">
     <div class="alert alert-danger" role="alert" v-if="!user.email">Email is empty!</div>
@@ -19,7 +22,7 @@
     <button type="submit" class="btn btn-primary" >Login</button>
   </form>
 </div>
-
+  </div>
 </template>
 
 <script>
@@ -41,37 +44,11 @@ export default {
     submit(){
       this.submitStatus=true;
       if(this.user.email&&this.user.password){
-        let site_for_token = "http://todoapi.local/oauth/token";
+        let site_for_token = "http://localhost:8000/oauth/token";
         this.$auth.login(this,site_for_token,this.user);
-
-
       }
 
 
-
-
-
-      // let site = "http://todoapi.local/api/user";
-      // let token = 'Bearer ' + this.$auth.getToken();
-      // let vue = this;
-      //
-      // this.$http.get(site,{}, {
-      //   headers: {
-      //     Authorization: token,
-      //     Accept:"application/json"
-      //   }
-      // }).then(response => {
-      //   vue.$auth.setAuthenticatedUser(response.body)
-      // });
-
-
-
-
-
-
-
-
-      // this.$router.push('/');
     },
 
   },

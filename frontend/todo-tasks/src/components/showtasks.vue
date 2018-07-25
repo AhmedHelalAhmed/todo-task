@@ -76,7 +76,7 @@ export default {
   },
 
   mounted() {
-      this.$http.get("http://todoapi.local/api/tasks").then(function(res) {
+      this.$http.get("/api/tasks").then(function(res) {
       this.tasks = res.data.data;
     });
 
@@ -91,7 +91,7 @@ export default {
       this.tasks.splice(index, 1);
 
       //backend
-      this.$http.post("http://todoapi.local/api/tasks/" + task.id, {
+      this.$http.post("/api/tasks/" + task.id, {
         _method: 'DELETE'
       }, {
         emulateJSON: true
@@ -146,7 +146,7 @@ export default {
     },
     swapbackend: function(id1,id2){
 
-      this.$http.post("http://todoapi.local/api/tasks/"+id1+"/"+id2,{}, {
+      this.$http.post("/api/tasks/"+id1+"/"+id2,{}, {
         emulateJSON: true}).then(res => {
         //frontend swap ids
          for(let task of this.tasks){

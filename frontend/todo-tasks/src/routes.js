@@ -3,6 +3,8 @@ import showTask from './components/showtask.vue'
 import createTask from './components/createtask.vue'
 import registeration from './components/registeration.vue'
 import login from './components/login.vue'
+import welcome from './components/welcome.vue'
+
 
 export default [{
     path: "/show/:id",
@@ -44,5 +46,12 @@ export default [{
       forVisitors: true
     }
   },
-
+  {
+    path: "/",
+    component: welcome,
+    name: 'welcome',
+    meta: {
+      forVisitors: true
+    }
+  },
 ]

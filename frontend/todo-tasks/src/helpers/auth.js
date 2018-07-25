@@ -27,7 +27,7 @@ export default function (Vue) {
         //---------- start get token ----------//
         if (response.body.success) {
           alert(response.body.message);
-          let site = "http://todoapi.local/oauth/token";
+          let site = "http://localhost:8000/oauth/token";
           //---------- start make the user login ----------//
           vue.$auth.login(vue, site, user);
           //---------- end make the user login ----------//
@@ -53,50 +53,18 @@ export default function (Vue) {
       };
 
 
-      vue.$http.post(site, data, {
-        emulateJSON: true
-      }).then(response => {
-
-
+      vue.$http.post(site, data).then(response => {
 
         //---------- start save token ----------//
         let token = response.body.access_token;
         let expiration = response.body.expires_in;
         this.setToken(token, expiration);
-        alert("token saved");
-        //---------- end save token ----------//
+        // alert("token saved");
 
-
-
-
-
-
-        //---------- start save Authenticated User ----------//
-        let site = "http://todoapi.local/api/user";
-        let token00 = 'Bearer ' + this.getToken();
-
-        vue.$http.get(site,{}, {
-          headers: {
-            Authorization: token00,
-            Accept:"application/json"
-          }
-        }).then(response => {
-          this.setAuthenticatedUser(response.body)
-          alert("AuthenticatedUser saved");
-
-
-          vue.$router.push('/');
-        });
-        //---------- end save Authenticated User ----------//
-
-
-
-
+        vue.$router.go('/')
 
 
       });
-
-
 
 
     },
@@ -127,7 +95,7 @@ export default function (Vue) {
 
     setAuthenticatedUser(user)
     {
-      localStorage.setItem('authenticatedUser', JSON.stringify(user));
+      localStorage.setItem('authenticatedUser', user);
     },
 
     getAuthenticatedUser()
