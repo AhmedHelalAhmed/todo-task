@@ -4,7 +4,7 @@ import createTask from './components/createtask.vue'
 import registeration from './components/registeration.vue'
 import login from './components/login.vue'
 import welcome from './components/welcome.vue'
-
+import app from './App.vue'
 
 export default [{
     path: "/show/:id",
@@ -52,6 +52,16 @@ export default [{
     name: 'welcome',
     meta: {
       forVisitors: true
+    }
+  },
+
+
+  {
+    path: "/",
+    component: app,
+    name: 'app',
+    meta: {
+      forAuth: true
     }
   },
 ]

@@ -61,7 +61,11 @@ export default function (Vue) {
         this.setToken(token, expiration);
         // alert("token saved");
 
-        vue.$router.go('/')
+
+        if(this.isAuth()){
+          vue.$router.push('/');
+        }
+
 
 
       });
@@ -78,11 +82,23 @@ export default function (Vue) {
       }
       else
       {
-        return false  ;
+        return false;
       }
 
     },
 
+    isUser()
+    {
+      if(this.getAuthenticatedUser())
+      {
+        return true;
+      }
+      else
+      {
+        return false  ;
+      }
+
+    },
 
 
     deleteToken()

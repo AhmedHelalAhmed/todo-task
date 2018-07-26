@@ -40,7 +40,7 @@ router.beforeEach(
   (to, from, next) => {
 
     if (to.matched.some(record => record.meta.forVisitors)) {
-      if (Vue.auth.isAuth(Vue)) {
+      if (!Vue.auth.isAuth(Vue)) {
         next({
           path: '/'
         })

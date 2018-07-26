@@ -132,16 +132,7 @@ export default {
   },
   mounted(){
 
-    if(this.$auth.isAuth()){
-      //---------- start save Authenticated User ----------//
-      let site = "api/user";
-      this.$http.get(site).then(response => {
-        console.log(response)
-        this.$auth.setAuthenticatedUser(response.body)
-        alert("AuthenticatedUser saved");
-        this.$router.push('/');
-      });
-    }
+
 
     // bus.$emit('send_data',[this.app_key,this.app_create_key]);
 
