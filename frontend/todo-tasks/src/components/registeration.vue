@@ -71,11 +71,11 @@ export default {
         this.user.password&&
         this.user.password_confirmation&&
         this.user.email){
-          let site = "/api/register";
+          let site = "api/register";
           this.$auth.register(this,site,this.user);
         }
 
-        this.$http.get('/api/user').then((res)=>{
+        this.$http.get('api/user').then((res)=>{
           console.log(res);
         });
 

@@ -66,7 +66,7 @@ export default {
         and set it with new value that is entered
       */
       //add to backend
-      this.$http.post("/api/tasks", {
+      this.$http.post("api/tasks", {
         description: this.description,
         details: this.details
       }, {

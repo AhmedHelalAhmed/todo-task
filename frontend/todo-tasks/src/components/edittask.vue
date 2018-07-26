@@ -52,7 +52,7 @@ export default {
   },
   created() {
     this.$http
-    .get("/api/tasks/" + this.id + "/edit")
+    .get("api/tasks/" + this.id + "/edit")
     .then(function(response) {
       this.description = response.data.data.task.description;
       this.details = response.data.data.task.details;
@@ -66,7 +66,7 @@ export default {
       */
 
       //add to backend
-      this.$http.post("/api/tasks/" + this.id, {
+      this.$http.post("api/tasks/" + this.id, {
         _method: 'PUT',
         description: this.description,
         details: this.details

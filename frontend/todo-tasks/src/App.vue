@@ -137,12 +137,11 @@ export default {
   },
   mounted(){
 
-    if(this.$auth.isAuth()){
+    if(this.$auth.isAuth()&&!this.$auth.getAuthenticatedUser()){
       //---------- start save Authenticated User ----------//
       let site = "api/user";
       this.$http.get(site).then(response => {
-        console.log(response)
-        this.$auth.setAuthenticatedUser(response.body)
+        this.$auth.setAuthenticatedUser(response.bodyText)
         alert("AuthenticatedUser saved");
         this.$router.push('/');
       });
