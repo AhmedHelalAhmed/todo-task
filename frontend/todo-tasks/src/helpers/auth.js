@@ -63,7 +63,7 @@ export default function (Vue) {
 
 
         if(this.isAuth()){
-          vue.$router.push('/');
+          vue.$router.go('/');
         }
 
 

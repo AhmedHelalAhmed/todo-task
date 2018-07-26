@@ -36,34 +36,34 @@ const router = new VueRouter({
 
 
 //this called when ever the navigation trigger
-router.beforeEach(
-  (to, from, next) => {
+// router.beforeEach(
+//   (to, from, next) => {
 
-    if (to.matched.some(record => record.meta.forVisitors)) {
-      if (!Vue.auth.isAuth(Vue)) {
-        next({
-          path: '/'
-        })
-      }
-      else {
-        next();
-      }
-    }
-    else if (to.matched.some(record => record.meta.forAuth)) {
-      if (!Vue.auth.isAuth(Vue)) {
-        next({
-          path: '/login'
-        })
-      }
-      else {
-        next();
-      }
-    }
-    else {
-      next();
-    }
-  }
-);
+//     if (to.matched.some(record => record.meta.forVisitors)) {
+//       if (!Vue.auth.isAuth(Vue)) {
+//         next({
+//           path: '/'
+//         })
+//       }
+//       else {
+//         next();
+//       }
+//     }
+//     else if (to.matched.some(record => record.meta.forAuth)) {
+//       if (!Vue.auth.isAuth(Vue)) {
+//         next({
+//           path: '/login'
+//         })
+//       }
+//       else {
+//         next();
+//       }
+//     }
+//     else {
+//       next();
+//     }
+//   }
+// );
 
 
 // export const bus = new Vue();

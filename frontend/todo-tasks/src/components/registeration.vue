@@ -79,7 +79,7 @@ export default {
           console.log(res);
         });
 
-        this.$router.push('/');
+        this.$router.go('/');
 
 
 

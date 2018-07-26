@@ -75,7 +75,7 @@ export default {
       }).then(function(response) {
 
         //redirect the url
-        this.$router.push('/');
+        this.$router.go('/');
 
         //show and hide components
         this.$emit('changeView', true);

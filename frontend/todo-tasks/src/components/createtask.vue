@@ -75,7 +75,7 @@ export default {
         //add to frontend
         this.$emit('createTask', true);
         this.$emit('changeView', true);
-        this.$router.push('/');
+        this.$router.go('/');
         // console.log("in createtask method");
       });
     },
