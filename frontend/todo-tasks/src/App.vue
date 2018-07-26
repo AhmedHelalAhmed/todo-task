@@ -30,18 +30,16 @@
 -->
 
 
-{{"app_key:"+  app_key}}
-{{"app_create_key:"+  app_create_key}}
-{{"route_name:"+  route_name}}
+
 
     <div v-if="this.$auth.isAuth()" class="container text-center">
-      <addtasks v-if="app_key&&app_create_key&&!route_name" v-on:addTask="listenToAddTask($event)">
+      <addtasks v-if="app_key&&app_create_key&&route_name" v-on:addTask="listenToAddTask($event)">
       </addtasks>
-      <showtasks v-if="app_key&&app_create_key&&!route_name" v-bind:newTask="tasks" v-on:changeView="listenToChangeView($event)">
+      <showtasks v-if="app_key&&app_create_key&&route_name" v-bind:newTask="tasks" v-on:changeView="listenToChangeView($event)">
       </showtasks>
       <router-view v-on:changeView="listenToChangeView($event)" v-on:createTask="listenToCreateTask($event)">
       </router-view>
-      <div v-on:click="callCreateTask()" v-if="app_create_key&&app_key&&!route_name">
+      <div v-on:click="callCreateTask()" v-if="app_create_key&&app_key&&route_name">
         <router-link :to="{path: '/create'}" class="btn btn-success">
           Create a Task
         </router-link>
@@ -96,15 +94,15 @@
       },
       listenToChangeView(e) {
         this.app_key = e;
-        this.route_name = null;
+        this.route_name = "welcome";
       },
       callCreateTask() {
         this.app_create_key = false;
-        this.route_name = null;
+        this.route_name = "welcome";
       },
       listenToCreateTask(e) {
         this.app_create_key = e;
-        this.route_name = null;
+        this.route_name = "welcome";
       }
 
     },
