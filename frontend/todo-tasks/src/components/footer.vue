@@ -21,7 +21,7 @@ export default {
 <style>
 
 
-  p {
+  footer p {
     margin-top: 0;
     margin-bottom: 1rem;
     height: 100%;
@@ -29,11 +29,11 @@ export default {
     color: rgba(255, 255, 255, .5);
     display: block;
   }
-  *, ::after, ::before {
+  footer, ::after, ::before {
     box-sizing: border-box;
   }
 
-  a{
+  footer a{
     color: #f3e9e9;
   }
 

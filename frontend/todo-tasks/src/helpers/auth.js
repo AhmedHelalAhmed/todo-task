@@ -26,7 +26,7 @@ export default function (Vue) {
 
         //---------- start get token ----------//
         if (response.body.success) {
-          alert(response.body.message);
+          console.log(response.body.message);
           let site = "http://localhost:8000/oauth/token";
           //---------- start make the user login ----------//
           vue.$auth.login(vue, site, user);
@@ -59,7 +59,7 @@ export default function (Vue) {
         let token = response.body.access_token;
         let expiration = response.body.expires_in;
         this.setToken(token, expiration);
-        // alert("token saved");
+        console.log("token saved");
 
 
         if(this.isAuth()){

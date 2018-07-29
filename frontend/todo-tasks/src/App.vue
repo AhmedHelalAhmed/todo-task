@@ -88,7 +88,7 @@
         this.$http.get(site).then(response => {
 
           this.$auth.setAuthenticatedUser(response.bodyText)
-          alert("Authenticated User saved");
+          console.log("Authenticated User saved");
         });
       }
 

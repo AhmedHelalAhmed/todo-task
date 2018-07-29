@@ -8,7 +8,7 @@
       <div class="row">
 
 
-        <div class="col-lg-5">
+        <div class="col-lg-12">
           <div class="media">
             <a class="pull-left" href="#">
 
@@ -19,13 +19,13 @@
 
 
 
-              <h4 class="media-heading">Welcome in <span>TODO</span> please</h4>
+              <h3 class="media-heading">Welcome in <span>TODO</span></h3>
 
 
 
               <hr style="margin:8px auto">
 
-              <h3><small><router-link  :to="{path: '/login'}" class="py-2 d-none d-md-inline-block">Login</router-link></small> or <small><router-link v-if="!this.$auth.isAuth()" :to="{path: '/register'}" class="py-2 d-none d-md-inline-block">Register</router-link></small></h3>
+              <h4>Please <small><router-link  :to="{path: '/login'}" class="py-2 d-none d-md-inline-block">Login</router-link></small> or <small><router-link v-if="!this.$auth.isAuth()" :to="{path: '/register'}" class="py-2 d-none d-md-inline-block">Register</router-link></small></h4>
 
             </div>
           </div>
@@ -138,9 +138,12 @@ export default {
 
 <style scoped>
 
+
+
   div .notAuth{
-    margin-top: 350px;
-    margin-right: 44px;
+    margin-top: 30%;
+    display: flex;
+    justify-content: center;
   }
 
   .media-heading span{
