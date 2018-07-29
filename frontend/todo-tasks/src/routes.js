@@ -47,7 +47,7 @@ export default [{
     }
   },
   {
-    path: "/",
+    path: "/welcome",
     component: welcome,
     name: 'welcome',
     meta: {

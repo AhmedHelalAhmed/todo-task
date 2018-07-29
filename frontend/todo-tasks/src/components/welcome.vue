@@ -3,7 +3,7 @@
 
 
 
-    <div v-if="!this.$auth.isAuth()" class="container text-center notAuth">
+    <div class="container text-center notAuth">
 
       <div class="row">
 
@@ -49,13 +49,7 @@
         v-on:changeView="listenToChangeView($event)">
       </showtasks>
 
-      <!--<router-view-->
-        <!--v-on:changeView="listenToChangeView($event)"-->
-        <!--v-on:createTask="listenToCreateTask($event)">-->
-      <!--</router-view>-->
 
-
-      <!-- <login></login> -->
 
       <div
         v-on:click="callCreateTask()"

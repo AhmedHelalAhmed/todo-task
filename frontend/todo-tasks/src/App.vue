@@ -1,26 +1,14 @@
 <template>
   <div>
     <app-header></app-header>
-
-
-
-    <div v-if="!this.$auth.isAuth()" class="container text-center">
-      <router-view></router-view>
-    </div>
-
-
-
-
-
-
-    <div v-if="this.$auth.isAuth()" class="container text-center">
-      <addtasks v-if="app_key&&app_create_key&&this.$route.name=='welcome'" v-on:addTask="listenToAddTask($event)">
+    <div class="container text-center">
+      <addtasks v-if="app_key&&app_create_key&&this.$route.name=='app'" v-on:addTask="listenToAddTask($event)">
       </addtasks>
-      <showtasks v-if="app_key&&app_create_key&&this.$route.name=='welcome'" v-bind:newTask="tasks" v-on:changeView="listenToChangeView($event)">
+      <showtasks v-if="app_key&&app_create_key&&this.$route.name=='app'" v-bind:newTask="tasks" v-on:changeView="listenToChangeView($event)">
       </showtasks>
-      <router-view v-on:changeView="listenToChangeView($event)" v-on:createTask="listenToCreateTask($event)">
+      <router-view v-on:changeView="listenToChangeView($event)" v-on:createTask="listenToCreateTask($event)" v-if="this.$route.name!='app'">
       </router-view>
-      <div v-on:click="callCreateTask()" v-if="app_create_key&&app_key&&this.$route.name=='welcome'">
+      <div v-on:click="callCreateTask()" v-if="app_create_key&&app_key&&this.$route.name=='app'">
         <router-link :to="{path: '/create'}" class="btn btn-success">
           Create a Task
         </router-link>
