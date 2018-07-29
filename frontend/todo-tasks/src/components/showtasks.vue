@@ -26,22 +26,22 @@
           </button>
           </td>
           <td>
-            <button @click="uptask(task.id,tasks[key-1-1].id,task)" class="btn btn-light">
+            <button @click="uptask(task,tasks[key-1-1],task)" class="btn btn-light">
            Up
           </button>
           </td>
           <td>
-            <button @click="downtask(task.id,tasks[key-1+1].id,task)" class="btn btn-warning">
+            <button @click="downtask(task,tasks[key-1+1],task)" class="btn btn-warning">
            Down
           </button>
           </td>
-          <td @click="edittask()">
-            <router-link :to="{path: '/edit/'+task.id}" class="btn btn-primary">
+          <td>
+            <router-link @click="edittask()" :to="{path: '/edit/'+task.id}" class="btn btn-primary">
               Edit
             </router-link>
             </td>
-            <td @click="viewtask()">
-              <router-link :to="{path: '/show/'+task.id}" class="btn btn-info">
+            <td>
+              <router-link  @click="viewtask()" :to="{path: '/show/'+task.id}" class="btn btn-info">
                 view
               </router-link>
             </td>
@@ -91,9 +91,14 @@
 
 
       },
-      uptask(the_current_id, the_up_id, task) {
+      uptask(the_current, the_up, task) {
 
-        //frontend
+
+        try{
+          let the_up_id=the_up.id;
+          let the_current_id=the_current.id;
+
+                //frontend
         let current_index = this.tasks.indexOf(task);
         let up_index = current_index - 1;
         if (this.tasks[up_index]) {
@@ -108,21 +113,39 @@
         } else {
           alert("can not do this");
         }
-      },
-      downtask: function(the_current_id, the_down_id, task) {
-        //frontend
-        var index = this.tasks.indexOf(task);
-        if (this.tasks[index + 1]) {
-          //backend
-          this.swapbackend(the_current_id, the_down_id);
-          var temp = this.tasks[index + 1];
-          this.tasks[index + 1] = this.tasks[index];
-          this.tasks[index] = temp;
-          //re render the component
-          this.$forceUpdate();
-        } else {
+        }catch(e){
           alert("can not do this");
         }
+
+
+
+
+      },
+      downtask: function(the_current, the_down, task) {
+
+
+        try{
+          let the_current_id=the_current.id;
+          let the_down_id=the_down.id;
+          //frontend
+          var index = this.tasks.indexOf(task);
+
+          if (this.tasks[index + 1]) {
+            //backend
+            this.swapbackend(the_current_id, the_down_id);
+            var temp = this.tasks[index + 1];
+            this.tasks[index + 1] = this.tasks[index];
+            this.tasks[index] = temp;
+            //re render the component
+            this.$forceUpdate();
+          } else {
+            alert("can not do this");
+          }
+          }catch(e){
+            alert("can not do this");
+          }
+
+
       },
       edittask: function() {
         this.$emit('changeView', false);
