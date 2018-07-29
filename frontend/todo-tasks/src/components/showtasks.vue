@@ -2,7 +2,7 @@
   <div class="container">
     <header>
       <h1 class="text-center">
-        ===============( tasks )===============
+        todo
       </h1>
     </header>
 
@@ -184,6 +184,7 @@
     padding: 20px;
     margin: 20px;
     text-transform: uppercase;
+    font-weight: bold;
   }
 
 
