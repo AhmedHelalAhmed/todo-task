@@ -40,7 +40,7 @@ router.beforeEach(
   (to, from, next) => {
 
     // if (to.matched.some(record => record.meta.forVisitors)) {
-    //   if (!Vue.auth.isAuth(Vue)) {
+    //   if (Vue.auth.isAuth(Vue)&&Vue.router.name=="login") {
     //     next({
     //       path: '/'
     //     })
@@ -50,7 +50,7 @@ router.beforeEach(
     //   }
     // }
     // else
-    if (to.matched.some(record => record.meta.forAuth)) {
+     if (to.matched.some(record => record.meta.forAuth)) {
       if (!Vue.auth.isAuth(Vue)) {
         next({
           path: '/welcome'

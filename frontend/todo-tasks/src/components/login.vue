@@ -44,8 +44,45 @@ export default {
     submit(){
       this.submitStatus=true;
       if(this.user.email&&this.user.password){
-        let site_for_token = "http://localhost:8000/oauth/token";
-        this.$auth.login(this,site_for_token,this.user);
+      let data = {
+        "client_id": this.user.client_id,
+        "client_secret": this.user.client_secret,
+        "grant_type": this.user.grant_type,
+        "username": this.user.email,
+        "password": this.user.password,
+      };
+
+      let site_for_token = "http://localhost:8000/oauth/token";
+
+      let vue=this;
+
+      this.$http.post(site_for_token, data).then(response => {
+          let token = response.body.access_token;
+          let expiration = response.body.expires_in;
+          this.$auth.setToken(token, expiration);
+          console.log("token saved");
+          if(vue.$auth.isAuth()){
+            //the two are required
+            //one for send the next request correctly
+            //the other for redirect
+            // vue.$router.go("/");
+
+            window.location.href = '/';
+
+            // this.$router.push({name:'app'});
+
+
+          }
+        }).catch(e=>{
+          console.log(e);
+        });
+
+
+
+
+
+
+
       }
 
 

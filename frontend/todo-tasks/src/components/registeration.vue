@@ -71,16 +71,41 @@ export default {
         this.user.password&&
         this.user.password_confirmation&&
         this.user.email){
-          let site = "api/register";
-          this.$auth.register(this,site,this.user);
+
+
+      let data = {
+        "name": this.user.name,
+        "email": this.user.email,
+        "password": this.user.password,
+        "password_confirmation": this.user.password_confirmation,
+      };
+
+      let site = "api/register";
+
+      this.$http.post(site, data,{
+        emulateJSON: true
+      }).then(response => {
+
+      if (response.body.success) {
+        console.log(response.body.message);
+        let site = "http://localhost:8000/oauth/token";
+
+        //redirect to login
+        // window.location.href = '/login';
+        this.$router.push("/login");
+
+
+      }
+
+
+      });
+
+
         }
 
-        this.$http.get('api/user').then((res)=>{
-          console.log(res);
-        });
-
-        this.$router.push({ name: "app"});
-
+        // this.$http.get('api/user').then((res)=>{
+        //   console.log(res);
+        // });
 
 
     },
