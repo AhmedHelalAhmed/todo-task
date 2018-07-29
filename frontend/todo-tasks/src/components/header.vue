@@ -9,6 +9,9 @@
         <router-link v-if="this.$auth.isAuth()" :to="{path: '/create'}" class="py-2 d-none d-md-inline-block">Write a task</router-link>
         <router-link v-if="!this.$auth.isAuth()" :to="{path: '/login'}" class="py-2 d-none d-md-inline-block">Login</router-link>
         <router-link v-if="!this.$auth.isAuth()" :to="{path: '/register'}" class="py-2 d-none d-md-inline-block">Register</router-link>
+        <div  v-on:click="logout">
+          <router-link v-if="this.$auth.isAuth()" :to="{path: '#'}" class="py-2 d-none d-md-inline-block">Log out</router-link>
+        </div>
       </div>
     </nav>
   </header>
@@ -21,7 +24,16 @@ export default {
     }
   },
 
-  methods: {},
+  methods: {
+
+
+
+
+    logout(){
+    this.$auth.deleteToken();
+    this.$router.go('/');
+    }
+  },
 
 }
 </script>

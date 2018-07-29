@@ -75,7 +75,7 @@ export default {
       }).then(function(response) {
 
         //redirect the url
-        this.$router.push('/'); //note if i use go this will never work
+        this.$router.push({ name: "app"}); //note if i use go this will never work
 
         //show and hide components
         this.$emit('changeView', true);

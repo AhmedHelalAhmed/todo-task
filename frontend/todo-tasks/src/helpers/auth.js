@@ -63,7 +63,11 @@ export default function (Vue) {
 
 
         if(this.isAuth()){
-          vue.$router.go('/');
+          //the two are required
+          //one for send the next request correctly
+          //the other for redirect
+          vue.$router.go("/");
+          vue.$router.push("/");
         }
 
 
@@ -95,7 +99,7 @@ export default function (Vue) {
       }
       else
       {
-        return false  ;
+        return false;
       }
 
     },
@@ -106,6 +110,7 @@ export default function (Vue) {
       localStorage.removeItem('access_token');
       localStorage.removeItem('expires_in');
       localStorage.removeItem('time_now');
+      localStorage.removeItem('authenticatedUser');
     },
 
 

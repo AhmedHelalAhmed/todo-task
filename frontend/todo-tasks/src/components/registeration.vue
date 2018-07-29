@@ -79,7 +79,7 @@ export default {
           console.log(res);
         });
 
-        this.$router.go('/');
+        this.$router.push({ name: "app"});
 
 
 

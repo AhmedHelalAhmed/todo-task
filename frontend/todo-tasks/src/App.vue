@@ -81,7 +81,7 @@
     mounted() {
 
 
-      //---------- start save Authenticated User ----------//
+      //start save Authenticated User
       if (this.$auth.isAuth() && !this.$auth.isUser()) {
 
         let site = "api/user";
@@ -91,8 +91,6 @@
           alert("Authenticated User saved");
         });
       }
-      //---------- start save Authenticated User ----------//
-
 
 
       // bus.$emit('send_data',[this.app_key,this.app_create_key]);
