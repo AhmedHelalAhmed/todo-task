@@ -1,9 +1,7 @@
 <template>
   <div class="container">
     <header>
-      <h1 class="text-center">
-        todo
-      </h1>
+      <h1 class="text-center">todo</h1>
     </header>
 
     <table class="table table-bordered table-dark">
@@ -55,13 +53,10 @@
   // import {bus, test} from '../main';
   export default {
     props: ['newTask'],
-    data() {
-      return {
-        tasks: [],
-      }
-    },
+    data() { return {tasks: [],} },
 
-    mounted() {
+    mounted()
+    {
       this.$http.get("api/tasks").then(function(res) {
         this.tasks = res.data.data;
       });
@@ -70,7 +65,7 @@
 
     methods: {
 
-      deletetask: function(task) {
+      deletetask: (task) => {
 
         //frontend
         var index = this.tasks.indexOf(task);
@@ -81,10 +76,9 @@
           _method: 'DELETE'
         }, {
           emulateJSON: true
-        }).then(function(res) {
+        }).then(res => {
 
-
-        }).catch(function(error) {
+        }).catch(error => {
 
         });
 
@@ -98,10 +92,11 @@
           let the_up_id=the_up.id;
           let the_current_id=the_current.id;
 
-                //frontend
+        //frontend
         let current_index = this.tasks.indexOf(task);
         let up_index = current_index - 1;
-        if (this.tasks[up_index]) {
+        if (this.tasks[up_index])
+        {
           var temp = this.tasks[up_index];
           this.tasks[up_index] = this.tasks[current_index];
           this.tasks[current_index] = temp;
@@ -110,10 +105,13 @@
 
           //re render the component
           this.$forceUpdate();
-        } else {
+        }
+        else
+        {
           alert("can not do this");
         }
-        }catch(e){
+        }catch(e)
+        {
           alert("can not do this");
         }
 
@@ -121,7 +119,7 @@
 
 
       },
-      downtask: function(the_current, the_down, task) {
+      downtask(the_current, the_down, task) {
 
 
         try{
@@ -147,13 +145,13 @@
 
 
       },
-      edittask: function() {
+      edittask() {
         this.$emit('changeView', false);
       },
-      viewtask: function() {
+      viewtask() {
         this.$emit('changeView', false);
       },
-      swapbackend: function(id1, id2) {
+      swapbackend(id1, id2) {
 
         this.$http.post("api/tasks/" + id1 + "/" + id2, {}, {
           emulateJSON: true
@@ -170,14 +168,14 @@
             }
           }
 
-        }).catch(function(error) {});
+        }).catch((error) => {});
       }
     },
 
 
     //from parent to child - change the value
     watch: {
-      newTask: function(val) {
+      newTask(val) {
         let index = val.length - 1
         let description = val[index].description;
         let id = val[index].id;
@@ -202,14 +200,12 @@
 
 <style scoped>
   /* Start Header */
-
-  header h1 {
+  header h1
+  {
     padding: 20px;
     margin: 20px;
     text-transform: uppercase;
     font-weight: bold;
   }
-
-
   /* End Header */
 </style>

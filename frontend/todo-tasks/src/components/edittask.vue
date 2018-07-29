@@ -50,16 +50,18 @@ export default {
       details: '',
     }
   },
-  created() {
+  created()
+  {
     this.$http
     .get("api/tasks/" + this.id + "/edit")
-    .then(function(response) {
+    .then(response => {
       this.description = response.data.data.task.description;
       this.details = response.data.data.task.details;
     });
   },
   methods: {
-    edittask: function() {
+    edittask()
+    {
       /*
         event from child to parent to change it's value
         and set it with new value that is entered
@@ -72,7 +74,7 @@ export default {
         details: this.details
       }, {
         emulateJSON: true
-      }).then(function(response) {
+      }).then(response => {
 
         //redirect the url
         this.$router.push({ name: "app"}); //note if i use go this will never work
@@ -85,7 +87,8 @@ export default {
 
     },
 
-    back() {
+    back()
+    {
       //show and hide components
       this.$emit('changeView', true);
     }
@@ -93,7 +96,7 @@ export default {
 
 }
 </script>
-<style>
+<style scoped>
 .back {
   display: inline;
 }

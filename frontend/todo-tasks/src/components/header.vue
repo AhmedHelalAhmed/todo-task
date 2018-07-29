@@ -18,20 +18,13 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
 
-    }
-  },
 
   methods: {
-
-
-
-
-    logout(){
-    this.$auth.deleteToken();
-    this.$router.go('/');
+    logout()
+    {
+      this.$auth.deleteToken();
+      this.$router.go('/');
     }
   },
 
@@ -42,32 +35,39 @@ export default {
 
 
 <style scoped>
-  .site-header {
+  .site-header
+  {
     background-color: rgba(0, 0, 0, .85);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
   }
-  .pb-1, .py-1 {
+  .pb-1, .py-1
+  {
     padding-bottom: .25rem!important;
   }
-  .pt-1, .py-1 {
+  .pt-1, .py-1
+  {
     padding-top: .25rem!important;
   }
-  .sticky-top {
+  .sticky-top
+  {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
   }
-  nav {
+  nav
+  {
     display: block;
   }
-  .site-header a {
+  .site-header a
+  {
     color: #999;
     transition: ease-in-out color .15s;
   }
 
-  a {
+  a
+  {
     color: #999;
     font-weight: bold;
     text-decoration: none;
@@ -75,10 +75,12 @@ export default {
     cursor: pointer;
   }
 
-  *, ::after, ::before {
+  *, ::after, ::before
+  {
     box-sizing: border-box;
   }
-  header{
+  header
+  {
     margin-bottom: 30px;
   }
 </style>

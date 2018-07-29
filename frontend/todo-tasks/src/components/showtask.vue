@@ -30,21 +30,24 @@
         details: '',
       }
     },
-    created(){
-    this.$http
-    .get("api/tasks/"+this.id)
-    .then(function(response){
-      this.description=response.data.data.task.description;
-      this.details=response.data.data.task.details;
-    });
-  },
-    methods: {
-      back(){
-          this.$emit('changeView',true);
-      }
+    created()
+    {
+      this.$http
+      .get("api/tasks/"+this.id)
+      .then(response => {
+        this.description=response.data.data.task.description;
+        this.details=response.data.data.task.details;
+      });
     },
+      methods:
+      {
+        back()
+        {
+          this.$emit('changeView',true);
+        }
+      },
 
   }
 </script>
-<style>
+<style scoped>
 </style>

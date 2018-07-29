@@ -40,7 +40,8 @@ export default {
   },
 
   methods: {
-    addtask: function() {
+    addtask()
+    {
       /*
         event from child to parent to change it's value
         and set it with new value that is entered
@@ -54,7 +55,7 @@ export default {
 
         emulateJSON: true
 
-      }).then(function(response) {
+      }).then(response => {
 
         // console.log(response.data);
 

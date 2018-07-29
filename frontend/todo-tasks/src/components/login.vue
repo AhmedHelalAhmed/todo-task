@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-
-
 <div class="text-left">
   <div class="status" v-if="submitStatus">
     <div class="alert alert-danger" role="alert" v-if="!user.email">Email is empty!</div>
@@ -41,9 +39,11 @@ export default {
   },
 
   methods: {
-    submit(){
+    submit()
+    {
       this.submitStatus=true;
-      if(this.user.email&&this.user.password){
+      if(this.user.email&&this.user.password)
+      {
       let data = {
         "client_id": this.user.client_id,
         "client_secret": this.user.client_secret,
@@ -60,28 +60,19 @@ export default {
           let token = response.body.access_token;
           let expiration = response.body.expires_in;
           this.$auth.setToken(token, expiration);
+
           console.log("token saved");
-          if(vue.$auth.isAuth()){
+
+          if(vue.$auth.isAuth())
+          {
             //the two are required
             //one for send the next request correctly
             //the other for redirect
             // vue.$router.go("/");
-
             window.location.href = '/';
-
             // this.$router.push({name:'app'});
-
-
           }
-        }).catch(e=>{
-          console.log(e);
-        });
-
-
-
-
-
-
+        }).catch(e =>console.log(e));
 
       }
 
@@ -91,8 +82,6 @@ export default {
     },
 
   },
-created(){
 
-}
 }
 </script>

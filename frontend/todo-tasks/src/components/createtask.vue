@@ -60,10 +60,11 @@ export default {
   },
 
   methods: {
-    createtask: function() {
+    createtask()
+    {
       /*
-        event from child to parent to change it's value
-        and set it with new value that is entered
+      * event from child to parent to change it's value
+      * and set it with new value that is entered
       */
       //add to backend
       this.$http.post("api/tasks", {
@@ -71,7 +72,7 @@ export default {
         details: this.details
       }, {
         emulateJSON: true
-      }).then(function(response) {
+      }).then(response => {
         //add to frontend
         this.$emit('createTask', true);
         this.$emit('changeView', true);
@@ -87,7 +88,7 @@ export default {
 
 }
 </script>
-<style>
+<style scoped>
 .back {
   display: inline;
 }
